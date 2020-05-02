@@ -27,7 +27,7 @@ class UsersController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $verifyData['phone'],
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
         ]);
 
         // 清除验证码缓存
