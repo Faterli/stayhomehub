@@ -42,4 +42,22 @@ class VerificationCodesController extends Controller
             'expired_at' => $expiredAt->toDateTimeString(),
         ])->setStatusCode(201);
     }
+    public function check(VerificationCodeRequest $request)
+    {
+        if($request->phone){
+            return response()->json([
+                'code' => 0,
+                'message' => '',
+                'data' => [true],
+            ])->setStatusCode(201);
+        }else{
+            return response()->json([
+                'code' => 0,
+                'message' => '',
+                'data' => [false],
+            ])->setStatusCode(201);
+        }
+    }
+
+
 }

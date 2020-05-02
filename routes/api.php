@@ -24,6 +24,9 @@ Route::prefix('v1')
                 // 删除token
                 Route::delete('/user/logout', 'AuthorizationsController@destroy')
                     ->name('authorizations.destroy');
+                //用户检测（手机号是否已注册）
+                Route::post('/user/check', 'VerificationCodesController@check')
+                    ->name('verificationCodes.check');
             });
 
         Route::middleware('throttle:' . config('api.rate_limits.access'))
