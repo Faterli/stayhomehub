@@ -18,6 +18,9 @@ Route::prefix('v1')
                 // 找回密码
                 Route::post('user/update/pwd', 'UsersController@repassword')
                     ->name('users.repassword');
+                // 修改手机号
+                Route::post('user/update/phone', 'UsersController@rephone')
+                    ->name('users.rephone');
                 // 登录
                 Route::post('/user/login', 'AuthorizationsController@store')
                     ->name('api.authorizations.store');
