@@ -15,6 +15,9 @@ Route::prefix('v1')
                 // 用户注册
                 Route::post('user/register', 'UsersController@store')
                     ->name('users.store');
+                // 找回密码
+                Route::post('user/update/pwd', 'UsersController@repassword')
+                    ->name('users.repassword');
                 // 登录
                 Route::post('/user/login', 'AuthorizationsController@store')
                     ->name('api.authorizations.store');
