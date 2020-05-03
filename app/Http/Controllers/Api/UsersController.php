@@ -89,13 +89,18 @@ class UsersController extends Controller
             // 返回401
             throw new AuthenticationException('验证码错误');
         }
-        $user = User::where('phone', $verifyData['phone'])
-                ->update(['phone' => $request->phone]);
+        $user = $request->user();
+
+        $attributes = $request->only(['phone']);
+
+        $user->update($attributes);
+
+        $res = new UserResource($user);
 
         // 清除验证码缓存
         \Cache::forget($request->verification_key);
 
-        if($user){
+        if($res){
             return response()->json([
                 'code' => 0,
                 'message' => '手机号修改成功',
@@ -105,7 +110,7 @@ class UsersController extends Controller
             return response()->json([
                 'code' => 0,
                 'message' => '修改失败',
-                'data' => [$user],
+                'data' => [$res],
             ])->setStatusCode(201);
         }
     }
