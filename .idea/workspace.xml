@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c4bfbd-f2b8-40fb-b99b-7009de40be3b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoriesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/CategoryResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_04_031430_create_categories_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_04_201919_seed_categories_data.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/UsersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,6 +153,9 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Http/Resources" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/Models" />
     </key>
@@ -173,7 +180,8 @@
       <workItem from="1587884297199" duration="4725000" />
       <workItem from="1587983483588" duration="210000" />
       <workItem from="1588121561204" duration="13868000" />
-      <workItem from="1588377797804" duration="31596000" />
+      <workItem from="1588377797804" duration="32884000" />
+      <workItem from="1588585251158" duration="3161000" />
     </task>
     <servers />
   </component>
@@ -184,6 +192,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="659" y="429" key="NewPhpFileDialog" timestamp="1588585151281">
+      <screen x="0" y="23" width="1680" height="961" />
+    </state>
+    <state x="659" y="429" key="NewPhpFileDialog/0.23.1680.961@0.23.1680.961" timestamp="1588585151281" />
     <state x="495" y="265" width="689" height="632" key="find.popup" timestamp="1588509526951">
       <screen x="0" y="23" width="1680" height="960" />
     </state>
