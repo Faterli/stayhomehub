@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c4bfbd-f2b8-40fb-b99b-7009de40be3b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoriesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/CategoryResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_04_031430_create_categories_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_04_201919_seed_categories_data.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/VideoController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/VideoRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/VideoResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Video.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_04_221953_create_videos_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
@@ -181,7 +181,7 @@
       <workItem from="1587983483588" duration="210000" />
       <workItem from="1588121561204" duration="13868000" />
       <workItem from="1588377797804" duration="32884000" />
-      <workItem from="1588585251158" duration="3161000" />
+      <workItem from="1588585251158" duration="13061000" />
     </task>
     <servers />
   </component>
@@ -192,17 +192,22 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588641982642">
+      <screen x="0" y="23" width="1680" height="963" />
+    </state>
+    <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.963@0.23.1680.963" timestamp="1588641982642" />
     <state x="659" y="429" key="NewPhpFileDialog" timestamp="1588585151281">
       <screen x="0" y="23" width="1680" height="961" />
     </state>
     <state x="659" y="429" key="NewPhpFileDialog/0.23.1680.961@0.23.1680.961" timestamp="1588585151281" />
-    <state x="495" y="265" width="689" height="632" key="find.popup" timestamp="1588509526951">
-      <screen x="0" y="23" width="1680" height="960" />
+    <state x="495" y="265" width="689" height="633" key="find.popup" timestamp="1588650027699">
+      <screen x="0" y="23" width="1680" height="961" />
     </state>
     <state x="495" y="262" width="689" height="538" key="find.popup/0.23.1680.952@0.23.1680.952" timestamp="1588381211447" />
     <state x="495" y="263" width="689" height="472" key="find.popup/0.23.1680.954/-1920.-157.1920.1057@0.23.1680.954" timestamp="1587822665982" />
     <state x="495" y="263" width="689" height="540" key="find.popup/0.23.1680.954@0.23.1680.954" timestamp="1588382731756" />
     <state x="495" y="264" width="689" height="630" key="find.popup/0.23.1680.958@0.23.1680.958" timestamp="1588470430111" />
     <state x="495" y="265" width="689" height="632" key="find.popup/0.23.1680.960@0.23.1680.960" timestamp="1588509526951" />
+    <state x="495" y="265" width="689" height="633" key="find.popup/0.23.1680.961@0.23.1680.961" timestamp="1588650027699" />
   </component>
 </project>

@@ -53,6 +53,10 @@ Route::prefix('v1')
                     // 修改手机号
                     Route::put('user/update/phone', 'UsersController@rephone')
                         ->name('users.rephone');
+
+                    // 上传视频
+                    Route::post('video/create', 'VideoController@store')
+                        ->name('video.store');
                 });
 
                 // 分类列表
