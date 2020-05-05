@@ -57,6 +57,9 @@ Route::prefix('v1')
                     // 上传视频
                     Route::post('video/create', 'VideoController@store')
                         ->name('video.store');
+                    // 修改视频
+                    Route::patch('/video/update/{id}', 'VideoController@update')
+                        ->name('video.update');
                 });
 
                 // 分类列表

@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c4bfbd-f2b8-40fb-b99b-7009de40be3b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/VideoController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/VideoRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/VideoResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Video.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_04_221953_create_videos_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/VideoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/VideoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/VideoRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/VideoRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Video.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Video.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_04_221953_create_videos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_04_221953_create_videos_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +143,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Policies" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -157,6 +157,7 @@
       <recent name="$PROJECT_DIR$/app/Http/Resources" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/Policies" />
       <recent name="$PROJECT_DIR$/app/Models" />
     </key>
   </component>
@@ -181,7 +182,7 @@
       <workItem from="1587983483588" duration="210000" />
       <workItem from="1588121561204" duration="13868000" />
       <workItem from="1588377797804" duration="32884000" />
-      <workItem from="1588585251158" duration="13061000" />
+      <workItem from="1588585251158" duration="27026000" />
     </task>
     <servers />
   </component>
@@ -192,10 +193,15 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588641982642">
-      <screen x="0" y="23" width="1680" height="963" />
+    <state x="578" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588701669517">
+      <screen x="0" y="23" width="1680" height="958" />
     </state>
+    <state x="578" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.958@0.23.1680.958" timestamp="1588701669517" />
     <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.963@0.23.1680.963" timestamp="1588641982642" />
+    <state x="601" y="232" key="NewPhpClassDialog" timestamp="1588694198665">
+      <screen x="0" y="23" width="1680" height="961" />
+    </state>
+    <state x="601" y="232" key="NewPhpClassDialog/0.23.1680.961@0.23.1680.961" timestamp="1588694198665" />
     <state x="659" y="429" key="NewPhpFileDialog" timestamp="1588585151281">
       <screen x="0" y="23" width="1680" height="961" />
     </state>

@@ -9,22 +9,24 @@ class CreateVideosTable extends Migration
     public function up()
     {
         Schema::create('videos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title')->index();
-            $table->string('introduction')->nullable();
-            $table->bigInteger('user_id')->unsigned()->index();
-            $table->integer('category_id_one')->unsigned()->index();
-            $table->integer('category_id_second')->unsigned()->index();
-            $table->string('country')->nullable();
-            $table->string('province')->nullable();
-            $table->string('city')->nullable();
-            $table->string('url')->nullable();
-            $table->string('cover')->nullable();
-            $table->string('cover_s')->nullable();
-            $table->string('video_duration')->nullable();
-            $table->timestamp('time')->nullable();
-            $table->integer('watch_jurisdiction')->unsigned()->default(0);
-            $table->integer('transfer')->unsigned()->default(0);
+            $table->increments('id')->comment('vid');;
+            $table->string('title')->index()->comment('标题');;
+            $table->string('introduction')->nullable()->comment('介绍');;
+            $table->bigInteger('user_id')->unsigned()->index()->comment('上传者id');;
+            $table->integer('category_id_one')->unsigned()->index()->comment('一级分类');;
+            $table->integer('category_id_second')->unsigned()->index()->comment('二级分类');;
+            $table->string('country')->nullable()->comment('国家');;
+            $table->string('province')->nullable()->comment('省份');;
+            $table->string('city')->nullable()->comment('城市');;
+            $table->string('url')->nullable()->comment('视频url');;
+            $table->string('cover')->nullable()->comment('焦点竖图');;
+            $table->string('cover_s')->nullable()->comment('焦点横图');;
+            $table->string('video_duration')->nullable()->comment('视频时长');;
+            $table->timestamp('time')->nullable()->comment('拍摄时间');;
+            $table->integer('watch_jurisdiction')->unsigned()->default(0)->comment('私密视频');;
+            $table->integer('transfer')->unsigned()->default(0)->comment('可转载');;
+            $table->integer('is_delete')->unsigned()->default(0)->comment('删除');;
+            $table->integer('status')->unsigned()->default(0)->comment('审核状态');;
             $table->timestamps();
         });
     }
