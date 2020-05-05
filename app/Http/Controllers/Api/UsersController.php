@@ -142,4 +142,21 @@ class UsersController extends Controller
 
         return (new UserResource($user));
     }
+    public function check(UserRequest $request)
+    {
+        if($request->phone){
+            return response()->json([
+                'code' => 0,
+                'message' => '',
+                'data' => [true],
+            ])->setStatusCode(201);
+        }else{
+            return response()->json([
+                'code' => 0,
+                'message' => '',
+                'data' => [false],
+            ])->setStatusCode(201);
+        }
+    }
+
 }
