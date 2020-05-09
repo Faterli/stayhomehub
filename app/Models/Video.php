@@ -4,9 +4,19 @@ namespace App\Models;
 
 class Video extends Model
 {
-    protected $fillable = ['title', 'introduction','user_id', 'category_id_one', 'category_id_second', 'country', 'province', 'city', 'url',
+    protected $fillable = ['title', 'introduction','user_id', 'category_id', 'category_id_second', 'country', 'province', 'city', 'url',
         'cover','cover_s','video_duration','time','watch_jurisdiction','transfer'
     ];
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     // 通过order进行话题排序
     public function scopeWithOrder($query, $order)
     {

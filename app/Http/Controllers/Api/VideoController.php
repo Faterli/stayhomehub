@@ -23,7 +23,7 @@ class VideoController extends Controller
             ->allowedIncludes('user', 'category')
             ->allowedFilters([
                 'title',
-                AllowedFilter::exact('category_id_one'),
+                AllowedFilter::exact('category_id'),
                 AllowedFilter::scope('withOrder'),
             ])
             ->paginate();
@@ -35,11 +35,11 @@ class VideoController extends Controller
     {
         $query = $user->video()->getQuery();
 
-        $topics = QueryBuilder::for($query)
+        $video = QueryBuilder::for($query)
             ->allowedIncludes('user', 'category')
             ->allowedFilters([
                 'title',
-                AllowedFilter::exact('category_id_one'),
+                AllowedFilter::exact('category_id'),
                 AllowedFilter::scope('withOrder'),
             ])
             ->paginate();

@@ -13,7 +13,7 @@ class CreateVideosTable extends Migration
             $table->string('title')->index()->comment('标题');;
             $table->string('introduction')->nullable()->comment('介绍');;
             $table->bigInteger('user_id')->unsigned()->index()->comment('上传者id');;
-            $table->integer('category_id_one')->unsigned()->index()->comment('一级分类');;
+            $table->integer('category_id')->unsigned()->index()->comment('一级分类');;
             $table->integer('category_id_second')->unsigned()->index()->comment('二级分类');;
             $table->string('country')->nullable()->comment('国家');;
             $table->string('province')->nullable()->comment('省份');;
