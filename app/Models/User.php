@@ -23,6 +23,10 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
         'name', 'email', 'phone', 'password','avatar','gender','birthday'
     ];
 
+    public function video()
+    {
+        return $this->hasMany(Video::class);
+    }
     /**
      * The attributes that should be hidden for arrays.
      *

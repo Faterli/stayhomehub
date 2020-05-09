@@ -63,5 +63,8 @@ Route::prefix('v1')
                 // 分类列表
                 Route::get('/column/home/list', 'CategoriesController@index')
                     ->name('categories.index');
+                // 查看某个用户发布的视频
+                Route::get('users/{user}/video', 'VideoController@userIndex')
+                    ->name('users.video.index');
             });
     });
