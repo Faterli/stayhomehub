@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c4bfbd-f2b8-40fb-b99b-7009de40be3b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Queries/VideoQuery.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Traits/QueryBuilderBindable.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/VideoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/VideoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Video.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Video.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +184,7 @@
       <workItem from="1588377797804" duration="32884000" />
       <workItem from="1588585251158" duration="27321000" />
       <workItem from="1588732110962" duration="112000" />
-      <workItem from="1589036700865" duration="7685000" />
+      <workItem from="1589036700865" duration="8695000" />
     </task>
     <servers />
   </component>

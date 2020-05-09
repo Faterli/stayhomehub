@@ -12,37 +12,22 @@ use Auth;
 use function GuzzleHttp\Promise\all;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
+use App\Http\Queries\VideoQuery;
 
 
 class VideoController extends Controller
 {
 
-    public function index(Request $request, Video $video)
+    public function index(Request $request,  VideoQuery $query)
     {
-        $video = QueryBuilder::for(Video::class)
-            ->allowedIncludes('user', 'category')
-            ->allowedFilters([
-                'title',
-                AllowedFilter::exact('category_id'),
-                AllowedFilter::scope('withOrder'),
-            ])
-            ->paginate();
+        $video = $query->paginate();
 
         return VideoResource::collection($video);
     }
 
-    public function userIndex(Request $request, User $user)
+    public function userIndex(Request $request, User $user, VideoQuery $query)
     {
-        $query = $user->video()->getQuery();
-
-        $video = QueryBuilder::for($query)
-            ->allowedIncludes('user', 'category')
-            ->allowedFilters([
-                'title',
-                AllowedFilter::exact('category_id'),
-                AllowedFilter::scope('withOrder'),
-            ])
-            ->paginate();
+        $video = $query->where('user_id', $user->id)->paginate();
 
         return VideoResource::collection($video);
     }
@@ -76,6 +61,11 @@ class VideoController extends Controller
 
         return response(null, 204);
     }
-
+    //详情
+    public function show($videoId, VideoQuery $query)
+    {
+        $video = $query->findOrFail($videoId);
+        return new VideoResource($video);
+    }
 
 }

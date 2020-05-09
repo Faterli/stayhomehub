@@ -56,7 +56,7 @@ Route::prefix('v1')
 
                     //上传、修改视频
                     Route::resource('video', 'VideoController')->only([
-                        'index','store', 'update', 'destroy'
+                        'index','store', 'update', 'destroy', 'show'
                     ]);
                 });
 

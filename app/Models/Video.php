@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use Spatie\QueryBuilder\QueryBuilder;
+
+
 class Video extends Model
 {
     protected $fillable = ['title', 'introduction','user_id', 'category_id', 'category_id_second', 'country', 'province', 'city', 'url',
@@ -41,5 +44,13 @@ class Video extends Model
     public function scopeRecentReplied($query)
     {
         return $query->orderBy('updated_at', 'desc');
+    }
+
+    public function resolveRouteBinding($value)
+    {
+        return QueryBuilder::for(self::class)
+            ->allowedIncludes('user', 'category')
+            ->where($this->getRouteKeyName(), $value)
+            ->first();
     }
 }
