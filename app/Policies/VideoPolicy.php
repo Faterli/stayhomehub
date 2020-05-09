@@ -11,4 +11,9 @@ class VideoPolicy extends Policy
         return $video->user_id == $user->id;
     }
 
+    public function destroy(User $user, Video $video)
+    {
+        return $video->user_id == $user->id;
+    }
+
 }

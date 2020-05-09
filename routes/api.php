@@ -54,12 +54,10 @@ Route::prefix('v1')
                     Route::put('user/update/phone', 'UsersController@rephone')
                         ->name('users.rephone');
 
-                    // 上传视频
-                    Route::post('video/create', 'VideoController@store')
-                        ->name('video.store');
-                    // 修改视频
-                    Route::patch('/video/update/{id}', 'VideoController@update')
-                        ->name('video.update');
+                    //上传、修改视频
+                    Route::resource('video', 'VideoController')->only([
+                        'index','store', 'update', 'destroy'
+                    ]);
                 });
 
                 // 分类列表
