@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c4bfbd-f2b8-40fb-b99b-7009de40be3b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Queries/AdminQuery.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BannersController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Queries/BannerQuery.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/BannerRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Resources/BannerResource.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Banner.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_10_134243_create_banners_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/banners/202005/10/1_1589092592_wAIVHPnqq5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/images/banners/202005/10/1_1589094010_MiEwDIh0uO.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/AdminsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AdminsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Queries/VideoQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Queries/VideoQuery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/AdminRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/AdminRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/VideoRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/VideoRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/ImageRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/ImageRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -186,7 +190,7 @@
       <workItem from="1588377797804" duration="32884000" />
       <workItem from="1588585251158" duration="27321000" />
       <workItem from="1588732110962" duration="112000" />
-      <workItem from="1589036700865" duration="17092000" />
+      <workItem from="1589036700865" duration="23101000" />
     </task>
     <servers />
   </component>
@@ -201,20 +205,21 @@
       <screen x="0" y="23" width="1680" height="952" />
     </state>
     <state x="628" y="188" key="#com.intellij.ide.util.MemberChooser/0.23.1680.952@0.23.1680.952" timestamp="1589077022243" />
-    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589080297787">
-      <screen x="0" y="23" width="1680" height="954" />
+    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589093727225">
+      <screen x="0" y="23" width="1680" height="952" />
     </state>
-    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.952@0.23.1680.952" timestamp="1589080002595" />
-    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.954@0.23.1680.954" timestamp="1589080297787" />
+    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.952@0.23.1680.952" timestamp="1589093727225" />
+    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.954@0.23.1680.954" timestamp="1589090892748" />
     <state x="578" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.958@0.23.1680.958" timestamp="1588701669517" />
     <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.963@0.23.1680.963" timestamp="1588641982642" />
     <state x="601" y="232" key="NewPhpClassDialog" timestamp="1588694198665">
       <screen x="0" y="23" width="1680" height="961" />
     </state>
     <state x="601" y="232" key="NewPhpClassDialog/0.23.1680.961@0.23.1680.961" timestamp="1588694198665" />
-    <state x="659" y="426" key="NewPhpFileDialog" timestamp="1589080118849">
-      <screen x="0" y="23" width="1680" height="954" />
+    <state x="659" y="425" key="NewPhpFileDialog" timestamp="1589093402511">
+      <screen x="0" y="23" width="1680" height="952" />
     </state>
+    <state x="659" y="425" key="NewPhpFileDialog/0.23.1680.952@0.23.1680.952" timestamp="1589093402511" />
     <state x="659" y="426" key="NewPhpFileDialog/0.23.1680.954@0.23.1680.954" timestamp="1589080118849" />
     <state x="659" y="429" key="NewPhpFileDialog/0.23.1680.961@0.23.1680.961" timestamp="1588585151281" />
     <state x="495" y="265" width="689" height="633" key="find.popup" timestamp="1588650027699">

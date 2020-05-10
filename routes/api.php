@@ -6,21 +6,18 @@ Route::prefix('v1')
     ->namespace('Api')
     ->name('api.v1.')
     ->group(function () {
-        //管理员登录
+        //管理员
+        //登录
         Route::get('admin/login', 'AdminsController@login')
             ->name('api.admins.store');
-//        //管理员新增
-//        Route::get('admin/create', 'AdminsController@create')
-//            ->name('api.admins.create');
         // 登出
         Route::delete('admin/logout', 'AdminsController@logout')
             ->name('api.admins.logout');
-//        // 编辑管理员信息
-//        Route::patch('/admin/update/{id}', 'AdminsController@update')
-//            ->name('api.admins.update');
+        // CURD
         Route::resource('admin', 'AdminsController')->only([
             'index','store', 'update', 'destroy', 'show'
         ]);
+
 
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
             ->group(function () {
@@ -50,10 +47,14 @@ Route::prefix('v1')
         Route::middleware('throttle:' . config('api.rate_limits.access'))
             ->group(function () {
                 // 游客可以访问的接口
-
+                //轮播图 CURD
+                Route::resource('banner', 'BannersController')->only([
+                    'index', 'show'
+                ]);
                 // 某个用户的详情
                 Route::get('users/{user}', 'UsersController@show')
                     ->name('users.show');
+
                 // 登录后可以访问的接口
                 Route::middleware('auth:api')->group(function() {
                     // 当前登录用户信息
@@ -73,6 +74,17 @@ Route::prefix('v1')
                     Route::resource('video', 'VideoController')->only([
                         'index','store', 'update', 'destroy', 'show'
                     ]);
+                });
+
+                // 后台登录后可以访问的接口
+                Route::middleware('auth:adminapi')->group(function() {
+                    //轮播图 CURD
+                    Route::resource('banner', 'BannersController')->only([
+                        'store', 'update', 'destroy',
+                    ]);
+                    // 上传图片
+                    Route::post('images', 'ImagesController@store')
+                        ->name('images.store');
                 });
 
                 // 分类列表
