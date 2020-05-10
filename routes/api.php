@@ -9,10 +9,18 @@ Route::prefix('v1')
         //管理员登录
         Route::get('admin/login', 'AdminsController@login')
             ->name('api.admins.store');
-        //管理员新增
-        Route::get('admin/create', 'AdminsController@create')
-            ->name('api.admins.create');
-
+//        //管理员新增
+//        Route::get('admin/create', 'AdminsController@create')
+//            ->name('api.admins.create');
+        // 登出
+        Route::delete('admin/logout', 'AdminsController@logout')
+            ->name('api.admins.logout');
+//        // 编辑管理员信息
+//        Route::patch('/admin/update/{id}', 'AdminsController@update')
+//            ->name('api.admins.update');
+        Route::resource('admin', 'AdminsController')->only([
+            'index','store', 'update', 'destroy', 'show'
+        ]);
 
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
             ->group(function () {

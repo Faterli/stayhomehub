@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Queries\AdminQuery;
 use App\Http\Requests\Api\AdminRequest;
 use App\Http\Resources\AdminResource;
 use App\Models\Admin;
@@ -30,10 +31,17 @@ class AdminsController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'Bearer',
-            'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
+            'expires_in' => \Auth::guard('adminapi')->factory()->getTTL() * 600
         ])->setStatusCode(201);
     }
-    public function create(AdminRequest $request)
+    public function index(Request $request,  AdminQuery $query)
+    {
+        $admin = $query->paginate();
+
+        return AdminResource::collection($admin);
+    }
+
+    public function store(AdminRequest $request)
     {
         $admin = Admin::create([
             'name' => $request->name,
@@ -44,6 +52,35 @@ class AdminsController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
+        return new AdminResource($admin);
+    }
+    public function logout()
+    {
+        auth('adminapi')->logout();
+        return response(null, 204);
+    }
+
+    //修改
+    public function update(AdminRequest $request, Admin $admin)
+    {
+
+
+        $admin->update($request->all());
+        return (new AdminResource($admin));
+    }
+    //删除
+    public function destroy(Admin $admin)
+    {
+
+        $admin->delete();
+
+        return response(null, 204);
+    }
+
+    //详情
+    public function show($adminId, AdminQuery $query)
+    {
+        $admin = $query->findOrFail($adminId);
         return new AdminResource($admin);
     }
 }

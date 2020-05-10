@@ -16,7 +16,7 @@ class VideoQuery extends QueryBuilder
             ->allowedFilters([
                 'title',
                 AllowedFilter::exact('category_id'),
-                AllowedFilter::scope('withOrder')->default('recentReplied'),
+                AllowedFilter::scope('withOrder'),
             ]);
     }
 }

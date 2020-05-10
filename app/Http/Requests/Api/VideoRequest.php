@@ -12,7 +12,7 @@ class VideoRequest extends FormRequest
                 return [
                     'title'              => 'required|string',
                     'introduction'       => 'required|string',
-                    'category_id_one'    => 'required',
+                    'category_id'        => 'required',
                     'category_id_second' => 'required',
                     'country'            => 'required|string',
                     'province'           => 'required|string',
@@ -30,7 +30,7 @@ class VideoRequest extends FormRequest
                 return [
                     'title'              => 'string',
                     'introduction'       => 'string',
-                    'category_id_one'    => 'exists:categories,id',
+                    'category_id'        => 'exists:categories,id',
                     'category_id_second' => 'exists:categories,id',
                     'country'            => 'string',
                     'province'           => 'string',
