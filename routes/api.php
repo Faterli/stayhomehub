@@ -47,9 +47,14 @@ Route::prefix('v1')
         Route::middleware('throttle:' . config('api.rate_limits.access'))
             ->group(function () {
                 // 游客可以访问的接口
-                //轮播图 CURD
+                //轮播图 列表页，详情页
                 Route::resource('banner', 'BannersController')->only([
                     'index', 'show'
+
+                ]);
+                //视频列表页，详情页
+                Route::resource('video', 'VideoController')->only([
+                    'index','store', 'update', 'destroy', 'show'
                 ]);
                 // 某个用户的详情
                 Route::get('users/{user}', 'UsersController@show')
@@ -70,7 +75,7 @@ Route::prefix('v1')
                     Route::put('user/update/phone', 'UsersController@rephone')
                         ->name('users.rephone');
 
-                    //上传、修改视频
+                    //上传、修改、删除视频CURD
                     Route::resource('video', 'VideoController')->only([
                         'index','store', 'update', 'destroy', 'show'
                     ]);
