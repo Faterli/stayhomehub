@@ -79,6 +79,11 @@ Route::prefix('v1')
                     Route::resource('video', 'VideoController')->only([
                         'index','store', 'update', 'destroy', 'show'
                     ]);
+
+                    //足迹点赞收藏接口
+                    Route::resource('meta', 'MetasController')->only([
+                        'index', 'store',
+                    ]);
                 });
 
                 // 后台登录后可以访问的接口

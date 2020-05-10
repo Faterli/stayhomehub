@@ -25,6 +25,7 @@ class AuthorizationsController extends Controller
         }
 
         return response()->json([
+            'user_id' => auth('api')->id(),
             'access_token' => $token,
             'token_type' => 'Bearer',
             'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
