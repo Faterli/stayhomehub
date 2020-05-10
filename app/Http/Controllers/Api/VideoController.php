@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Requests\Api\VideoRequest;
+use App\Models\Meta;
 use App\Models\Video;
 use App\Models\Category;
 use App\Models\User;
@@ -64,6 +65,13 @@ class VideoController extends Controller
     //详情
     public function show($videoId, VideoQuery $query)
     {
+        $user_id = auth('api')->id();
+        $where = [
+            'video_id'  => $videoId,
+            'user_id'   => $user_id??0,
+            'type'      => 'view',
+        ];
+        Meta::create($where);
         $video = $query->findOrFail($videoId);
         return new VideoResource($video);
     }

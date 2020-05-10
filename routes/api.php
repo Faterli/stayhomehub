@@ -54,7 +54,7 @@ Route::prefix('v1')
                 ]);
                 //视频列表页，详情页
                 Route::resource('video', 'VideoController')->only([
-                    'index','store', 'update', 'destroy', 'show'
+                    'index', 'show'
                 ]);
                 // 某个用户的详情
                 Route::get('users/{user}', 'UsersController@show')
@@ -77,7 +77,7 @@ Route::prefix('v1')
 
                     //上传、修改、删除视频CURD
                     Route::resource('video', 'VideoController')->only([
-                        'index','store', 'update', 'destroy', 'show'
+                        'store', 'update', 'destroy',
                     ]);
 
                     //足迹点赞收藏接口

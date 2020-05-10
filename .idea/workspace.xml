@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c4bfbd-f2b8-40fb-b99b-7009de40be3b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/MetasController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Queries/MetaQuery.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/Api/MetaRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/MetaResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Meta.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_10_170729_create_metas_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/AuthorizationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AuthorizationsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/VideoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/VideoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +182,7 @@
       <workItem from="1588377797804" duration="32884000" />
       <workItem from="1588585251158" duration="27321000" />
       <workItem from="1588732110962" duration="112000" />
-      <workItem from="1589036700865" duration="32034000" />
+      <workItem from="1589036700865" duration="32817000" />
     </task>
     <servers />
   </component>
@@ -203,10 +197,10 @@
       <screen x="0" y="23" width="1680" height="952" />
     </state>
     <state x="628" y="188" key="#com.intellij.ide.util.MemberChooser/0.23.1680.952@0.23.1680.952" timestamp="1589077022243" />
-    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589102946620">
+    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589111243807">
       <screen x="0" y="23" width="1680" height="952" />
     </state>
-    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.952@0.23.1680.952" timestamp="1589102946620" />
+    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.952@0.23.1680.952" timestamp="1589111243807" />
     <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.954@0.23.1680.954" timestamp="1589090892748" />
     <state x="578" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.958@0.23.1680.958" timestamp="1588701669517" />
     <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.963@0.23.1680.963" timestamp="1588641982642" />
