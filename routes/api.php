@@ -6,6 +6,13 @@ Route::prefix('v1')
     ->namespace('Api')
     ->name('api.v1.')
     ->group(function () {
+        //管理员登录
+        Route::get('admin/login', 'AdminsController@login')
+            ->name('api.admins.store');
+        //管理员新增
+        Route::get('admin/create', 'AdminsController@create')
+            ->name('api.admins.create');
+
 
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
             ->group(function () {
