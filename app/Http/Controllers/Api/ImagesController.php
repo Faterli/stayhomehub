@@ -25,4 +25,18 @@ class ImagesController extends Controller
 
         return new ImageResource($image);
     }
+    public function store_admin(ImageRequest $request, ImageUploadHandler $uploader, Image $image)
+    {
+        $user_id = '0000';
+
+        $size = $request->type == 'avatar' ? 416 : 1024;
+        $result = $uploader->save($request->image, Str::plural($request->type), $user_id, $size);
+
+        $image->path = $result['path'];
+        $image->type = $request->type;
+        $image->user_id = $user_id;
+        $image->save();
+
+        return new ImageResource($image);
+    }
 }

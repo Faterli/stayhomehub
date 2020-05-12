@@ -14,7 +14,7 @@ class VideoQuery extends QueryBuilder
 
         $this->allowedIncludes('user', 'category')
             ->allowedFilters([
-                'title',
+                'title','status',
                 AllowedFilter::exact('category_id'),
                 AllowedFilter::scope('withOrder'),
             ]);

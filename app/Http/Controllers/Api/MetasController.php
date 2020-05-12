@@ -47,6 +47,22 @@ class MetasController extends Controller
 
     }
 
+    public function rank(Request $request,MetaQuery $query)
+    {
+
+        $type = $request->type;
+
+        $list = $query
+                ->where('type',$type)
+                ->select('video_id',\DB::raw('count(*) as num'))
+                ->groupBy('video_id')
+                ->orderBy('num','desc')
+                ->get();
+
+        return MetaResource::collection($list);
+
+    }
+
 
 
 

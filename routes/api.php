@@ -59,6 +59,12 @@ Route::prefix('v1')
                 // 某个用户的详情
                 Route::get('users/{user}', 'UsersController@show')
                     ->name('users.show');
+                // 某个用户的详情
+                Route::get('rank', 'MetasController@rank')
+                    ->name('metas.rank');
+                // 上传图片
+                Route::post('adminimages', 'ImagesController@store_admin')
+                    ->name('images.store_admin');
 
                 // 登录后可以访问的接口
                 Route::middleware('auth:api')->group(function() {
@@ -77,7 +83,7 @@ Route::prefix('v1')
 
                     //上传、修改、删除视频CURD
                     Route::resource('video', 'VideoController')->only([
-                        'store', 'update', 'destroy',
+                        'index', 'store', 'update', 'destroy', 'show'
                     ]);
 
                     //足迹点赞收藏接口
@@ -92,9 +98,7 @@ Route::prefix('v1')
                     Route::resource('banner', 'BannersController')->only([
                         'store', 'update', 'destroy',
                     ]);
-                    // 上传图片
-                    Route::post('images', 'ImagesController@store')
-                        ->name('images.store');
+
                 });
 
                 // 分类列表
