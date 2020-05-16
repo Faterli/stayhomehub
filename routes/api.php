@@ -28,7 +28,7 @@ Route::prefix('v1')
                 Route::post('user/register', 'UsersController@store')
                     ->name('users.store');
                 // 找回密码
-                Route::post('user/update/pwd', 'UsersController@repassword')
+                Route::get('user/update/pwd', 'UsersController@repassword')
                     ->name('users.repassword');
                 // 登录
                 Route::post('/user/login', 'AuthorizationsController@store')
@@ -40,7 +40,7 @@ Route::prefix('v1')
                 Route::delete('/user/logout', 'AuthorizationsController@destroy')
                     ->name('authorizations.destroy');
                 //用户检测（手机号是否已注册）
-                Route::post('/user/check', 'VerificationCodesController@check')
+                Route::get('/user/check', 'VerificationCodesController@check')
                     ->name('verificationCodes.check');
             });
 

@@ -59,7 +59,7 @@ class VerificationCodesController extends Controller
         }else{
             return response()->json([
                 'code' => 400,
-                'message' => '改手机号已注册',
+                'message' => '该手机号已注册',
                 'data' => [false],
             ]);
         }

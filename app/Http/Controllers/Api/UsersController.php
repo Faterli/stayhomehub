@@ -69,16 +69,16 @@ class UsersController extends Controller
 
         if($user){
             return response()->json([
-                'code' => 0,
+                'code' => 200,
                 'message' => '密码重置成功',
-                'data' => [true],
-            ])->setStatusCode(201);
+                'result' => [true],
+            ])->setStatusCode(200);
         }else{
             return response()->json([
-                'code' => 0,
+                'code' => 400,
                 'message' => '重置失败',
-                'data' => [$user],
-            ])->setStatusCode(201);
+                'result' => [$user],
+            ])->setStatusCode(200);
         }
     }
     //修改手机号
