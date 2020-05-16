@@ -24,23 +24,39 @@ class AuthorizationsController extends Controller
             throw new AuthenticationException('用户名或密码错误');
         }
 
-        return response()->json([
-            'user_id' => auth('api')->id(),
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
-        ])->setStatusCode(201);
+         return response()->json([
+                 'code' => 200,
+                 'message' => '',
+                 'result' => [
+                     'user_id' => auth('api')->id(),
+                     'access_token' => $token,
+                     'token_type' => 'Bearer',
+                     'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
+                  ],
+         ]);
     }
     public function update()
     {
         $token = auth('api')->refresh();
-        return $this->respondWithToken($token);
+         return response()->json([
+                 'code' => 200,
+                 'message' => '',
+                 'result' => [
+                     $this->respondWithToken($token)
+                  ],
+         ]);
     }
 
     public function destroy()
     {
         auth('api')->logout();
-        return response(null, 204);
+         return response()->json([
+                 'code' => 200,
+                 'message' => '登出成功',
+                 'result' => [
+
+                  ],
+         ]);
     }
     protected function respondWithToken($token)
     {

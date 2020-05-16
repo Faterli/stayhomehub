@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Api\VerificationPhoneRequest;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Overtrue\EasySms\EasySms;
@@ -38,24 +39,29 @@ class VerificationCodesController extends Controller
         \Cache::put($key, ['phone' => $phone, 'code' => $code], $expiredAt);
 
         return response()->json([
-            'key' => $key,
-            'expired_at' => $expiredAt->toDateTimeString(),
-        ])->setStatusCode(201);
+            'code' => 200,
+            'message' => '',
+            'result' => [
+                'key' => $key,
+                'expired_at' => $expiredAt->toDateTimeString(),
+            ],
+
+        ]);
     }
-    public function check(VerificationCodeRequest $request)
+    public function check(VerificationPhoneRequest $request)
     {
         if($request->phone){
             return response()->json([
-                'code' => 0,
-                'message' => '',
+                'code' => 200,
+                'message' => '该手机号未注册',
                 'data' => [true],
-            ])->setStatusCode(201);
+            ]);
         }else{
             return response()->json([
-                'code' => 0,
-                'message' => '',
+                'code' => 400,
+                'message' => '改手机号已注册',
                 'data' => [false],
-            ])->setStatusCode(201);
+            ]);
         }
     }
 

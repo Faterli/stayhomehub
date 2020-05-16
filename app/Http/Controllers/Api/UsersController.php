@@ -40,8 +40,13 @@ class UsersController extends Controller
 
         // 清除验证码缓存
         \Cache::forget($request->verification_key);
-
-        return new UserResource($user);
+         return response()->json([
+                 'code' => 200,
+                 'message' => '',
+                 'result' => [
+                     new UserResource($user)
+                  ],
+         ]);
     }
     //重置密码
     public function repassword(RepasswordRequest $request)
@@ -141,22 +146,6 @@ class UsersController extends Controller
         $user->update($attributes);
 
         return (new UserResource($user));
-    }
-    public function check(UserRequest $request)
-    {
-        if($request->phone){
-            return response()->json([
-                'code' => 0,
-                'message' => '',
-                'data' => [true],
-            ])->setStatusCode(201);
-        }else{
-            return response()->json([
-                'code' => 0,
-                'message' => '',
-                'data' => [false],
-            ])->setStatusCode(201);
-        }
     }
 
 }

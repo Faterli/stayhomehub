@@ -50,7 +50,6 @@ Route::prefix('v1')
                 //轮播图 列表页，详情页
                 Route::resource('banner', 'BannersController')->only([
                     'index', 'show'
-
                 ]);
                 //视频列表页，详情页
                 Route::resource('video', 'VideoController')->only([
@@ -65,6 +64,11 @@ Route::prefix('v1')
                 // 上传图片
                 Route::post('adminimages', 'ImagesController@store_admin')
                     ->name('images.store_admin');
+
+                //消息通知 CURD
+                Route::resource('news', 'NewsController')->only([
+                    'index', 'update',
+                ]);
 
                 // 登录后可以访问的接口
                 Route::middleware('auth:api')->group(function() {
@@ -98,6 +102,7 @@ Route::prefix('v1')
                     Route::resource('banner', 'BannersController')->only([
                         'store', 'update', 'destroy',
                     ]);
+
 
                 });
 
