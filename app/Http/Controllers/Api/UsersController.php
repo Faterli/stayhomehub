@@ -19,12 +19,22 @@ class UsersController extends Controller
         $verifyData = \Cache::get($request->verification_key);
 
         if (!$verifyData) {
-            abort(403, '验证码已失效');
+            return response()->json([
+                'code' => 400,
+                'message' => '验证码已失效',
+                'result' => [
+                ],
+            ])->setStatusCode(200);
         }
 
         if (!hash_equals($verifyData['code'], $request->verification_code)) {
             // 返回401
-            throw new AuthenticationException('验证码错误');
+            return response()->json([
+                'code' => 400,
+                'message' => '验证码已失效',
+                'result' => [
+                ],
+            ])->setStatusCode(200);
         }
         $response = Zttp::withHeaders(['Accept' => 'application/json'])
             ->get('http://shibe.online/api/shibes', []);
@@ -54,7 +64,12 @@ class UsersController extends Controller
         $verifyData = \Cache::get($request->verification_key);
 
         if (!$verifyData) {
-            abort(403, '验证码已失效');
+            return response()->json([
+                'code' => 400,
+                'message' => '验证码已失效',
+                'result' => [
+                ],
+            ])->setStatusCode(200);
         }
 
         if (!hash_equals($verifyData['code'], $request->verification_code)) {
@@ -87,7 +102,12 @@ class UsersController extends Controller
         $verifyData = \Cache::get($request->verification_key);
 
         if (!$verifyData) {
-            abort(403, '验证码已失效');
+            return response()->json([
+                'code' => 400,
+                'message' => '验证码已失效',
+                'result' => [
+                ],
+            ])->setStatusCode(200);
         }
 
         if (!hash_equals($verifyData['code'], $request->verification_code)) {
@@ -109,25 +129,41 @@ class UsersController extends Controller
             return response()->json([
                 'code' => 0,
                 'message' => '手机号修改成功',
-                'data' => [true],
-            ])->setStatusCode(201);
+                'result' => [
+                    new UserResource($user)
+                ],
+            ])->setStatusCode(200);
         }else{
             return response()->json([
                 'code' => 0,
                 'message' => '修改失败',
-                'data' => [$res],
-            ])->setStatusCode(201);
+                'result' => [
+                    new UserResource($user)
+                ],
+            ])->setStatusCode(200);
         }
     }
 
     public function show(User $user, Request $request)
     {
-        return new UserResource($user);
+        return response()->json([
+            'code' => 200,
+            'message' => '',
+            'result' => [
+                new UserResource($user)
+            ],
+        ]);
     }
 
     public function me(Request $request)
     {
-        return new UserResource($request->user());
+         return response()->json([
+                 'code' => 200,
+                 'message' => '',
+                 'result' => [
+                     new UserResource($request->user())
+                  ],
+         ]);
     }
     public function update(UserRequest $request)
     {
@@ -145,7 +181,13 @@ class UsersController extends Controller
         }
         $user->update($attributes);
 
-        return (new UserResource($user));
+         return response()->json([
+                 'code' => 200,
+                 'message' => '',
+                 'result' => [
+                     new UserResource($user),
+                  ],
+         ]);
     }
 
 }
