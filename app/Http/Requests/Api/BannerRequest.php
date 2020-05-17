@@ -11,20 +11,18 @@ class BannerRequest extends FormRequest
     {
         switch ($this->method()) {
             case 'POST':
-                $userId = auth('adminapi')->id();
 
                 return [
                     'video_id'  => 'exists:videos,id',
-                    'pic'       => 'exists:images,id,type,banner,user_id,' . $userId,
+                    'pic'       => 'exists:images,id,type,banner',
                     'status'    => 'required|string',
                 ];
                 break;
             case 'PATCH':
-                $userId = auth('adminapi')->id();
 
                 return [
                     'video_id'  => 'exists:videos,id',
-                    'pic'       => 'exists:images,id,type,banner,user_id,' . $userId,
+                    'pic'       => 'exists:images,id,type,banner',
                     'status'    => 'string',
                 ];
                 break;

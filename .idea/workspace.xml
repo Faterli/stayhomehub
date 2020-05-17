@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="13c4bfbd-f2b8-40fb-b99b-7009de40be3b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/uploads/images/avatars/202005/11/1_1589212174_o0lPGEqPmM.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/images/avatars/202005/12/1_1589242307_kL8Lpxhjvv.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/AdminsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AdminsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/AuthorizationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/AuthorizationsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/BannersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/BannersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/CategoriesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ImagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ImagesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/MetasController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/MetasController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Queries/VideoQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Queries/VideoQuery.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/VideoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/VideoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Queries/MetaQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Queries/MetaQuery.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/BannerRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/BannerRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Meta.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -154,6 +159,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -190,7 +196,11 @@
       <workItem from="1589036700865" duration="36377000" />
       <workItem from="1589126832256" duration="413000" />
       <workItem from="1589206631934" duration="3867000" />
-      <workItem from="1589286025557" duration="3740000" />
+      <workItem from="1589286025557" duration="4091000" />
+      <workItem from="1589342568369" duration="12000" />
+      <workItem from="1589385337413" duration="2171000" />
+      <workItem from="1589461067919" duration="12275000" />
+      <workItem from="1589638356123" duration="17277000" />
     </task>
     <servers />
   </component>
@@ -201,6 +211,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="440" y="164" key="#Deployment" timestamp="1589644864286">
+      <screen x="0" y="23" width="1680" height="952" />
+    </state>
+    <state x="440" y="164" key="#Deployment/0.23.1680.952@0.23.1680.952" timestamp="1589644864286" />
+    <state x="465" y="178" key="#Options" timestamp="1589644934959">
+      <screen x="0" y="23" width="1680" height="952" />
+    </state>
+    <state x="465" y="178" key="#Options/0.23.1680.952@0.23.1680.952" timestamp="1589644934959" />
     <state x="304" y="161" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589128748582">
       <screen x="0" y="23" width="1680" height="954" />
     </state>
@@ -209,10 +227,13 @@
       <screen x="0" y="23" width="1680" height="952" />
     </state>
     <state x="628" y="188" key="#com.intellij.ide.util.MemberChooser/0.23.1680.952@0.23.1680.952" timestamp="1589077022243" />
-    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589111243807">
+    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589737245483">
       <screen x="0" y="23" width="1680" height="952" />
     </state>
-    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.952@0.23.1680.952" timestamp="1589111243807" />
+    <state x="2101" y="105" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.808/1440.-157.1920.1057@1440.-157.1920.1057" timestamp="1589462822304" />
+    <state x="2101" y="105" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.811/1440.-157.1920.1057@1440.-157.1920.1057" timestamp="1589463291201" />
+    <state x="2101" y="86" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1440.877/1440.-157.1920.981@1440.-157.1920.981" timestamp="1589522083627" />
+    <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.952@0.23.1680.952" timestamp="1589737245483" />
     <state x="578" y="259" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.954@0.23.1680.954" timestamp="1589090892748" />
     <state x="578" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.958@0.23.1680.958" timestamp="1588701669517" />
     <state x="578" y="261" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.23.1680.963@0.23.1680.963" timestamp="1588641982642" />
@@ -220,21 +241,35 @@
       <screen x="0" y="23" width="1680" height="961" />
     </state>
     <state x="601" y="232" key="NewPhpClassDialog/0.23.1680.961@0.23.1680.961" timestamp="1588694198665" />
-    <state x="659" y="425" key="NewPhpFileDialog" timestamp="1589102211008">
-      <screen x="0" y="23" width="1680" height="952" />
+    <state x="2193" y="289" key="NewPhpFileDialog" timestamp="1589462650296">
+      <screen x="1440" y="-157" width="1920" height="1057" />
     </state>
+    <state x="2193" y="289" key="NewPhpFileDialog/0.23.1440.808/1440.-157.1920.1057@1440.-157.1920.1057" timestamp="1589462650296" />
     <state x="659" y="425" key="NewPhpFileDialog/0.23.1680.952@0.23.1680.952" timestamp="1589102211008" />
     <state x="659" y="426" key="NewPhpFileDialog/0.23.1680.954@0.23.1680.954" timestamp="1589080118849" />
     <state x="659" y="429" key="NewPhpFileDialog/0.23.1680.961@0.23.1680.961" timestamp="1588585151281" />
-    <state x="495" y="262" width="689" height="538" key="find.popup" timestamp="1589242201137">
+    <state x="164" y="124" key="SettingsEditor" timestamp="1589520786119">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="1909" y="10" key="SettingsEditor/0.23.1440.811/1440.-157.1920.1057@1440.-157.1920.1057" timestamp="1589519343605" />
+    <state x="164" y="124" key="SettingsEditor/0.23.1440.877/1440.-157.1920.981@1440.-157.1920.981" timestamp="1589520786119" />
+    <state x="495" y="262" width="689" height="538" key="find.popup" timestamp="1589640864777">
       <screen x="0" y="23" width="1680" height="952" />
     </state>
-    <state x="495" y="262" width="689" height="538" key="find.popup/0.23.1680.952@0.23.1680.952" timestamp="1589242201137" />
+    <state x="495" y="262" width="689" height="538" key="find.popup/0.23.1680.952@0.23.1680.952" timestamp="1589640864777" />
     <state x="495" y="263" width="689" height="472" key="find.popup/0.23.1680.954/-1920.-157.1920.1057@0.23.1680.954" timestamp="1587822665982" />
     <state x="495" y="263" width="689" height="540" key="find.popup/0.23.1680.954@0.23.1680.954" timestamp="1588382731756" />
     <state x="495" y="264" width="689" height="630" key="find.popup/0.23.1680.958@0.23.1680.958" timestamp="1588470430111" />
     <state x="495" y="265" width="689" height="632" key="find.popup/0.23.1680.960@0.23.1680.960" timestamp="1588509526951" />
     <state x="495" y="265" width="689" height="633" key="find.popup/0.23.1680.961@0.23.1680.961" timestamp="1588650027699" />
+    <state x="731" y="236" key="ftp.server.browser" timestamp="1589644857521">
+      <screen x="0" y="23" width="1680" height="952" />
+    </state>
+    <state x="731" y="236" key="ftp.server.browser/0.23.1680.952@0.23.1680.952" timestamp="1589644857521" />
+    <state x="712" y="397" key="publish.login" timestamp="1589644149812">
+      <screen x="0" y="23" width="1680" height="952" />
+    </state>
+    <state x="712" y="397" key="publish.login/0.23.1680.952@0.23.1680.952" timestamp="1589644149812" />
     <state x="505" y="232" width="670" height="676" key="search.everywhere.popup" timestamp="1589108227006">
       <screen x="0" y="23" width="1680" height="952" />
     </state>

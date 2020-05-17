@@ -126,16 +126,15 @@ class UsersController extends Controller
         \Cache::forget($request->verification_key);
 
         if($res){
+            $user_info = new UserResource($user);
             return response()->json([
-                'code' => 0,
+                'code' => 200,
                 'message' => '手机号修改成功',
-                'result' => [
-                    new UserResource($user)
-                ],
+                'result' => $user_info,
             ])->setStatusCode(200);
         }else{
             return response()->json([
-                'code' => 0,
+                'code' => 400,
                 'message' => '修改失败',
                 'result' => [
                     new UserResource($user)
@@ -157,12 +156,13 @@ class UsersController extends Controller
 
     public function me(Request $request)
     {
+        $info = new UserResource($request->user());
+        $info['birthday'] = date('Y-m-d',$info['birthday']);
+
          return response()->json([
                  'code' => 200,
                  'message' => '',
-                 'result' => [
-                     new UserResource($request->user())
-                  ],
+                 'result' =>$info
          ]);
     }
     public function update(UserRequest $request)

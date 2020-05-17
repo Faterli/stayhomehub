@@ -39,10 +39,10 @@ class MetasController extends Controller
             $count = Meta::where($where)->count();
 
             return response()->json([
-                'code' => 0,
-                'message' => '',
+                'code' => 200,
+                'message' => '操作成功',
                 'data' => ['num'=>$count],
-            ])->setStatusCode(201);
+            ])->setStatusCode(200);
         }
 
     }

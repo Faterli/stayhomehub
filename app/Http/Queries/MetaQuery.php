@@ -12,7 +12,7 @@ class MetaQuery extends QueryBuilder
     {
         parent::__construct(Meta::query());
 
-        $this->allowedIncludes('video')
+        $this->allowedIncludes('user', 'category', 'video')
             ->allowedFilters([
                 'type',
                 AllowedFilter::exact('user_id'),

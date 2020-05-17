@@ -28,8 +28,13 @@ class BannersController extends Controller
             'pic' => $image->path,
             'status' => $request->status,
         ]);
-
-        return new BannerResource($banner);
+        return response()->json([
+            'code' => 200,
+            'message' => '添加成功',
+            'result' => [
+                new BannerResource($banner)
+            ],
+        ]);
     }
     //修改
     public function update(BannerRequest $request, Banner $banner)
@@ -42,15 +47,25 @@ class BannersController extends Controller
 
 
         $banner->update($attributes);
-
-        return (new BannerResource($banner));
+        return response()->json([
+            'code' => 200,
+            'message' => '修改成功',
+            'result' => [
+                new BannerResource($banner)
+            ],
+        ]);
     }
     //删除
     public function destroy(Banner $banner)
     {
         $banner->delete();
 
-        return response(null, 204);
+        return response()->json([
+            'code' => 200,
+            'message' => '删除成功',
+            'result' => [
+            ],
+        ]);
     }
     //详情
     public function show($bannerId, BannerQuery $query)

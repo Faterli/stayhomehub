@@ -23,7 +23,13 @@ class VideoController extends Controller
     {
         $video = $query->paginate();
 
-        return VideoResource::collection($video);
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'result' => [
+                VideoResource::collection($video)
+            ],
+        ]);
     }
 
     public function userIndex(Request $request, User $user, VideoQuery $query)
@@ -41,8 +47,13 @@ class VideoController extends Controller
         $video->user_id = $request->user()->id;
         $video->save();
 
-
-        return (new VideoResource($video));
+         return response()->json([
+                 'code' => 200,
+                 'message' => '上传成功',
+                 'result' => [
+                     new VideoResource($video)
+                  ],
+         ]);
     }
     //修改
     public function update(VideoRequest $request, Video $video)
@@ -51,7 +62,13 @@ class VideoController extends Controller
         $this->authorize('update', $video);
 
         $video->update($request->all());
-        return (new VideoResource($video));
+        return response()->json([
+            'code' => 200,
+            'message' => '修改成功',
+            'result' => [
+                new VideoResource($video)
+            ],
+        ]);
     }
     //删除
     public function destroy(Video $video)
@@ -60,7 +77,12 @@ class VideoController extends Controller
 
         $video->delete();
 
-        return response(null, 204);
+        return response()->json([
+            'code' => 200,
+            'message' => '删除成功',
+            'result' => [
+            ],
+        ]);
     }
     //详情
     public function show($videoId, VideoQuery $query)
@@ -73,7 +95,13 @@ class VideoController extends Controller
         ];
         Meta::create($where);
         $video = $query->findOrFail($videoId);
-        return new VideoResource($video);
+        return response()->json([
+            'code' => 200,
+            'message' => '查询详情成功',
+            'result' => [
+                new VideoResource($video)
+            ],
+        ]);
     }
 
 }

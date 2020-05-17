@@ -58,7 +58,7 @@ Route::prefix('v1')
                 // 某个用户的详情
                 Route::get('users/{user}', 'UsersController@show')
                     ->name('users.show');
-                // 某个用户的详情
+                // 排行榜接口
                 Route::get('rank', 'MetasController@rank')
                     ->name('metas.rank');
                 // 上传图片
@@ -87,7 +87,7 @@ Route::prefix('v1')
 
                     //上传、修改、删除视频CURD
                     Route::resource('video', 'VideoController')->only([
-                        'index', 'store', 'update', 'destroy', 'show'
+                         'store', 'update', 'destroy', 'show'
                     ]);
 
                     //足迹点赞收藏接口

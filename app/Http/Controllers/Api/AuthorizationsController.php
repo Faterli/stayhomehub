@@ -21,7 +21,13 @@ class AuthorizationsController extends Controller
         $credentials['password'] = $request->password;
 
         if (!$token = \Auth::guard('api')->attempt($credentials)) {
-            throw new AuthenticationException('用户名或密码错误');
+//            throw new AuthenticationException('用户名或密码错误');
+            return response()->json([
+                'code' => 400,
+                'message' => '用户名或密码错误',
+                'result' => [
+                ],
+            ])->setStatusCode(200);
         }
 
          return response()->json([
@@ -31,7 +37,7 @@ class AuthorizationsController extends Controller
                      'user_info' => auth('api')->user(),
                      'access_token' => $token,
                      'token_type' => 'Bearer',
-                     'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
+                     'expires_in' => \Auth::guard('api')->factory()->getTTL() * 86400
                   ],
          ]);
     }

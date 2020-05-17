@@ -25,20 +25,36 @@ class AdminsController extends Controller
         $credentials['password'] = $request->password;
 
         if (!$token = \Auth::guard('adminapi')->attempt($credentials)) {
-            throw new AuthenticationException('用户名或密码错误');
+//            throw new AuthenticationException('用户名或密码错误');
+            return response()->json([
+                'code' => 400,
+                'message' => '用户名或密码错误',
+                'result' => [
+                ],
+            ])->setStatusCode(200);
         }
-
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'Bearer',
-            'expires_in' => \Auth::guard('adminapi')->factory()->getTTL() * 600
-        ])->setStatusCode(201);
+            'code' => 200,
+            'message' => '',
+            'result' => [
+                'user_info' => auth('adminapi')->user(),
+                'access_token' => $token,
+                'token_type' => 'Bearer',
+                'expires_in' => \Auth::guard('adminapi')->factory()->getTTL() * 600
+            ],
+        ]);
     }
     public function index(Request $request,  AdminQuery $query)
     {
         $admin = $query->paginate();
 
-        return AdminResource::collection($admin);
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'result' => [
+                AdminResource::collection($admin)
+            ],
+        ]);
     }
 
     public function store(AdminRequest $request)
@@ -51,13 +67,24 @@ class AdminsController extends Controller
             'admin_type' => $request->admin_type,
             'password' => bcrypt($request->password),
         ]);
-
-        return new AdminResource($admin);
+        return response()->json([
+            'code' => 200,
+            'message' => '添加成功',
+            'result' => [
+                new AdminResource($admin)
+            ],
+        ]);
     }
     public function logout()
     {
         auth('adminapi')->logout();
-        return response(null, 204);
+        return response()->json([
+            'code' => 200,
+            'message' => '登出成功',
+            'result' => [
+
+            ],
+        ]);
     }
 
     //修改
@@ -66,7 +93,12 @@ class AdminsController extends Controller
 
 
         $admin->update($request->all());
-        return (new AdminResource($admin));
+        $info = new AdminResource($admin);
+        return response()->json([
+            'code' => 200,
+            'message' => '修改成功',
+            'result' => $info,
+        ]);
     }
     //删除
     public function destroy(Admin $admin)
@@ -74,7 +106,12 @@ class AdminsController extends Controller
 
         $admin->delete();
 
-        return response(null, 204);
+        return response()->json([
+            'code' => 200,
+            'message' => '删除成功',
+            'result' => [
+            ],
+        ]);
     }
 
     //详情

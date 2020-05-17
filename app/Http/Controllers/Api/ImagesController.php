@@ -23,7 +23,12 @@ class ImagesController extends Controller
         $image->user_id = $user->id;
         $image->save();
 
-        return new ImageResource($image);
+        $info = new ImageResource($image);
+         return response()->json([
+                 'code' => 200,
+                 'message' => '',
+                 'result' => $info,
+         ]);
     }
     public function store_admin(ImageRequest $request, ImageUploadHandler $uploader, Image $image)
     {
