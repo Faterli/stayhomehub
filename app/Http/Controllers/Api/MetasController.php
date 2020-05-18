@@ -51,15 +51,22 @@ class MetasController extends Controller
     {
 
         $type = $request->type;
+        $time = $request->time;
 
         $list = $query
                 ->where('type',$type)
+                ->where('created_at','>',$time)
                 ->select('video_id',\DB::raw('count(*) as num'))
                 ->groupBy('video_id')
                 ->orderBy('num','desc')
                 ->get();
 
-        return MetaResource::collection($list);
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'data' => MetaResource::collection($list),
+        ])->setStatusCode(200);
+
 
     }
 

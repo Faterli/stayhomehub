@@ -14,7 +14,7 @@ class MetaQuery extends QueryBuilder
 
         $this->allowedIncludes('user', 'category', 'video')
             ->allowedFilters([
-                'type',
+                'type','created_at',
                 AllowedFilter::exact('user_id'),
                 AllowedFilter::exact('video_id'),
             ]);
