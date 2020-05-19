@@ -22,13 +22,27 @@ class VideoController extends Controller
     public function index(Request $request,  VideoQuery $query)
     {
         $video = $query->paginate();
+        $list  = VideoResource::collection($video);
+        $total = count($list);
+        foreach ($list as $k=>$v){
+            $where = [
+                'user_id' => auth('api')->id(),
+                'video_id'=>$v['id'],
+                'type'=>'collect',
+            ];
+            $count = Meta::where($where)->count();
+            $list[$k]['is_collect'] = empty($count) ? false : true ;
 
+        }
         return response()->json([
             'code' => 200,
             'message' => '查询成功',
-            'result' => [
-                VideoResource::collection($video)
-            ],
+            'result' =>[
+                'list'  => $list,
+                'total' => $total,
+            ]
+
+            ,
         ]);
     }
 
@@ -50,11 +64,13 @@ class VideoController extends Controller
          return response()->json([
                  'code' => 200,
                  'message' => '上传成功',
-                 'result' => [
+                 'result' =>
                      new VideoResource($video)
-                  ],
+                  ,
          ]);
     }
+
+
     //修改
     public function update(VideoRequest $request, Video $video)
     {
@@ -65,9 +81,9 @@ class VideoController extends Controller
         return response()->json([
             'code' => 200,
             'message' => '修改成功',
-            'result' => [
+            'result' =>
                 new VideoResource($video)
-            ],
+            ,
         ]);
     }
     //删除
@@ -98,9 +114,9 @@ class VideoController extends Controller
         return response()->json([
             'code' => 200,
             'message' => '查询详情成功',
-            'result' => [
+            'result' =>
                 new VideoResource($video)
-            ],
+            ,
         ]);
     }
 

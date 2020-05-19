@@ -17,7 +17,9 @@ Route::prefix('v1')
         Route::resource('admin', 'AdminsController')->only([
             'index','store', 'update', 'destroy', 'show'
         ]);
-
+        //腾讯云api签名生成
+        Route::post('signature', 'AuthorizationsController@signature')
+            ->name('authorizations.signature');
 
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
             ->group(function () {

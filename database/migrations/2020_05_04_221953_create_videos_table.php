@@ -18,12 +18,12 @@ class CreateVideosTable extends Migration
             $table->string('country')->nullable()->comment('国家');;
             $table->string('province')->nullable()->comment('省份');;
             $table->string('city')->nullable()->comment('城市');;
-            $table->string('url')->nullable()->comment('视频url');;
+            $table->string('source_url')->nullable()->comment('视频url');;
             $table->string('cover')->nullable()->comment('焦点竖图');;
             $table->string('cover_s')->nullable()->comment('焦点横图');;
             $table->string('video_duration')->nullable()->comment('视频时长');;
             $table->timestamp('time')->nullable()->comment('拍摄时间');;
-            $table->integer('watch_jurisdiction')->unsigned()->default(0)->comment('私密视频');;
+            $table->integer('user_watch_jurisdiction')->unsigned()->default(0)->comment('私密视频');;
             $table->integer('transfer')->unsigned()->default(0)->comment('可转载');;
             $table->integer('is_delete')->unsigned()->default(0)->comment('删除');;
             $table->integer('status')->unsigned()->default(0)->comment('审核状态');;
