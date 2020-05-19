@@ -26,6 +26,7 @@ class CreateVideosTable extends Migration
             $table->integer('user_watch_jurisdiction')->unsigned()->default(0)->comment('私密视频');;
             $table->integer('transfer')->unsigned()->default(0)->comment('可转载');;
             $table->integer('is_delete')->unsigned()->default(0)->comment('删除');;
+            $table->integer('up_count')->unsigned()->default(0)->comment('点赞数');;
             $table->integer('status')->unsigned()->default(0)->comment('审核状态');;
             $table->timestamps();
         });

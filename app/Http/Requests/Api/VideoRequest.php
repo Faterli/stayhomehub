@@ -17,12 +17,12 @@ class VideoRequest extends FormRequest
                     'country'            => 'required|string',
                     'province'           => 'required|string',
                     'city'               => 'required|string',
-                    'url'                => 'required|string',
+                    'source_url'                => 'required|string',
                     'cover'              => 'required|string',
                     'cover_s'            => 'required|string',
                     'video_duration'     => 'required|string',
                     'time'               => 'required|string',
-                    'watch_jurisdiction' => 'required',
+                    'user_watch_jurisdiction' => 'required',
                     'transfer'           => 'required',
                 ];
                 break;
@@ -35,12 +35,12 @@ class VideoRequest extends FormRequest
                     'country'            => 'string',
                     'province'           => 'string',
                     'city'               => 'string',
-                    'url'                => 'string',
+                    'source_url'                => 'string',
                     'cover'              => 'string',
                     'cover_s'            => 'string',
                     'video_duration'     => 'string',
                     'time'               => 'string',
-                    'watch_jurisdiction' => 'string',
+                    'user_watch_jurisdiction' => 'string',
                     'transfer'           => 'string',
                 ];
                 break;
