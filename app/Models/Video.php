@@ -19,6 +19,10 @@ class Video extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function metas()
+    {
+        return $this->hasMany(Meta::class);
+    }
 
     // 通过order进行话题排序
     public function scopeWithOrder($query, $order)

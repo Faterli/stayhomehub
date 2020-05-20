@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Meta extends Model
 {
     protected $fillable = [
-        'user_id', 'video_id', 'type'
+        'user_id', 'video_id',
     ];
     public function video()
     {

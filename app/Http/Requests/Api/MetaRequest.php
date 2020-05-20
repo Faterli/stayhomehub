@@ -10,7 +10,6 @@ class MetaRequest extends FormRequest
     {
         return [
             'video_id'   => 'exists:videos,id',
-            'type'       => 'required|string|in:view,up,collect',
         ];
     }
 

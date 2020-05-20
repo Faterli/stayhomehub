@@ -96,6 +96,18 @@ Route::prefix('v1')
                     Route::resource('meta', 'MetasController')->only([
                         'index', 'store',
                     ]);
+
+                    // 通知列表
+                    Route::get('/message/list', 'NotificationsController@index')
+                        ->name('notifications.index');
+                    // 一键已读通知
+                    Route::put('/message/check/all', 'NotificationsController@read')
+                        ->name('notifications.index');
+                    // 通知统计
+                    Route::get('/message/unread', 'NotificationsController@stats')
+                        ->name('notifications.stats');
+
+
                 });
 
                 // 后台登录后可以访问的接口

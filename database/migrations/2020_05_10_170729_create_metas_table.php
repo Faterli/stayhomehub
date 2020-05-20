@@ -13,7 +13,6 @@ class CreateMetasTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->index();
             $table->integer('video_id')->index();
-            $table->string('type');
             $table->timestamps();
         });
     }

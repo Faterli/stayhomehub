@@ -25,18 +25,21 @@ class MetasController extends Controller
         $where = [
             'video_id'  => $request->video_id,
             'user_id'   => $userId,
-            'type'      => $request->type,
         ];
 
         $count = Meta::where($where)->count();
 
         if (!empty($count)){
-            $meta = Meta::where($where)->delete();
+            $meta = Meta::where($where)->first();
+
+            $down = Meta::find($meta->id);
+            $down->delete();
+
         }else{
             $meta = Meta::create($where);
         }
         if ($meta){
-            $count = Meta::where($where)->count();
+            $count = Meta::where('video_id','=',$request->video_id)->count();
 
             return response()->json([
                 'code' => 200,
