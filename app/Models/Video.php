@@ -7,8 +7,8 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class Video extends Model
 {
-    protected $fillable = ['title', 'introduction','user_id', 'category_id', 'category_id_second', 'country', 'province', 'city', 'source_url',
-        'cover','cover_s','video_duration','time','user_watch_jurisdiction','transfer','up_count'
+    protected $fillable = ['title', 'introduction','user_id', 'category_id', 'shooting_country', 'shooting_province', 'shooting_city', 'url',
+        'cover','cover_s','video_duration','shooting_time','user_watch_jurisdiction','transfer','up_count'
     ];
     public function category()
     {

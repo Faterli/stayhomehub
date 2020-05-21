@@ -8,7 +8,7 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->index()->comment('名称');
+            $table->string('column_name')->index()->comment('名称');
             $table->integer('parentId')->default(0)->comment('父级id');
         });
     }

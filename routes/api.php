@@ -21,6 +21,14 @@ Route::prefix('v1')
         Route::post('signature', 'AuthorizationsController@signature')
             ->name('authorizations.signature');
 
+
+        // 分类列表
+        Route::get('/column/home/list', 'CategoriesController@index')
+            ->name('categories.index');
+        // 二级分类列表
+        Route::get('/column/list/{category_id}', 'CategoriesController@list')
+            ->name('categories.list');
+
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
             ->group(function () {
                 // 短信验证码
@@ -119,10 +127,6 @@ Route::prefix('v1')
 
 
                 });
-
-                // 分类列表
-                Route::get('/column/home/list', 'CategoriesController@index')
-                    ->name('categories.index');
                 // 查看某个用户发布的视频
                 Route::get('users/{user}/video', 'VideoController@userIndex')
                     ->name('users.video.index');

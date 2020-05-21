@@ -9,37 +9,38 @@ class SeedCategoriesData extends Migration
     {
         $categories = [
             [
-            'name' => '娱乐'
+            'column_name' => '娱乐'
             ],
             [
-            'name' => '音乐'
+            'column_name' => '音乐'
             ],
             [
-            'name' => '舞蹈'
+            'column_name' => '舞蹈'
             ],
             [
-            'name' => '生活'
+            'column_name' => '生活'
             ],
             [
-            'name' => '科技'
+            'column_name' => '科技'
             ],
             [
-            'name' => 'VLOG'
+            'column_name' => 'VLOG'
             ],
             [
-            'name' => '鬼畜'
+            'column_name' => '鬼畜'
             ],
             [
-            'name' => '游戏'
+            'column_name' => '游戏'
             ],
             [
-            'name' => '番剧'
+            'column_name' => '番剧'
             ],
             [
-            'name' => '影视'
+            'column_name' => '影视'
             ],
             ];
-        DB::table('categories')->insert($categories); }
+        DB::table('categories')->insert($categories);
+    }
     public function down()
     {
         DB::table('categories')->truncate(); }

@@ -19,4 +19,17 @@ class CategoriesController extends Controller
                   ],
          ]);
     }
+    public function list(Request $request)
+    {
+        $categoryid = $request->category_id;
+
+        $list = Category::where(['parentId'=>$categoryid])->get();
+
+        $_list = ['list'=>$list];
+        return response()->json([
+                 'code' => 200,
+                 'message' => '',
+                 'result' =>$_list,
+         ]);
+    }
 }
