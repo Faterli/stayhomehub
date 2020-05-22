@@ -29,7 +29,7 @@ class VideoReplied extends Notification
             'user_id' => $this->meta->user->id,
             'user_name' => $this->meta->user->name,
             'user_avatar' => $this->meta->user->avatar,
-            'video_link' => $video->source_url,
+            'video_link' => $video->url,
             'video_id' => $video->id,
             'video_title' => $video->title,
         ];

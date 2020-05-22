@@ -21,14 +21,13 @@ class VideoController extends Controller
 
     public function index(Request $request,  VideoQuery $query)
     {
-        $video = $query->paginate();
+        $video = $query->paginate($request->pagesize, ['*'], 'page', $request->page);
         $list  = VideoResource::collection($video);
         $total = count($list);
         foreach ($list as $k=>$v){
             $where = [
                 'user_id' => auth('api')->id(),
                 'video_id'=>$v['id'],
-                'type'=>'collect',
             ];
             $count = Meta::where($where)->count();
             $list[$k]['is_collect'] = empty($count) ? false : true ;
