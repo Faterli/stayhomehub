@@ -21,6 +21,10 @@ Route::prefix('v1')
         Route::post('signature', 'AuthorizationsController@signature')
             ->name('authorizations.signature');
 
+        //足迹点赞收藏接口
+        Route::resource('view', 'ViewController')->only([
+            'index', 'store',
+        ]);
 
         // 分类列表
         Route::get('/column/home/list', 'CategoriesController@index')

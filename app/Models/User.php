@@ -71,7 +71,9 @@ class User extends Authenticatable implements MustVerifyEmailContract, JWTSubjec
     }
     public function markAsRead()
     {
-        $this->notification_count = 0; $this->save(); $this->unreadNotifications->markAsRead();
+        $this->notification_count = 0;
+        $this->save();
+        $this->unreadNotifications->markAsRead();
     }
 
 }

@@ -13,7 +13,27 @@ class NotificationsController extends Controller
     {
         $notifications = $request->user()->notifications()->paginate();
 
-        return NotificationResource::collection($notifications);
+        $notification = NotificationResource::collection($notifications);
+        $total        = NotificationResource::collection($notifications)->total();
+
+        $notification_res = [];
+        foreach ($notification as $value)
+        {
+            $notification_single = [];
+            $notification_single['id'] = !empty($value['id']) ? $value['id'] : '';
+            $notification_single['status'] = !empty($value['read_at']) ? 3 : 2;
+            $notification_single['send_time'] = !empty($value['created_at']) ? date('Y-m-d H:i:s',strtotime($value['created_at'])) : '';
+            $notification_single['content'] = "用户".$value['data']['user_name']."收藏了您的作品【".$value['data']['video_title']."】";
+            $notification_res[] = $notification_single;
+        }
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'result' =>[
+                'list'  => $notification_res,
+                'total' => $total,
+            ]
+        ]);
     }
 
     // 一键已读所有通知

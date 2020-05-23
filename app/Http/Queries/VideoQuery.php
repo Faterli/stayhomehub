@@ -57,7 +57,7 @@ class VideoQuery extends QueryBuilder
 
                 $_category_arr = Category::where(['parentId'=>$categoryid])->get()->toArray();
                 $category_arr = array_column($_category_arr,'id');
-
+                array_push($category_arr,$categoryid);
                 $this->allowedIncludes('user', 'category')
                     ->whereIn('category_id',  $category_arr)
                     ->where('shooting_time',">",  $start)

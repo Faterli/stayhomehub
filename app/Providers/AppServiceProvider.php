@@ -24,5 +24,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \App\Models\Meta::observe(\App\Observers\MetaObserver::class);
+        \App\Models\View::observe(\App\Observers\ViewObserver::class);
     }
 }

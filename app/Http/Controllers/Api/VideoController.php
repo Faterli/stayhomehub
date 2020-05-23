@@ -7,6 +7,7 @@ use App\Models\Meta;
 use App\Models\Video;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\View;
 use Illuminate\Http\Request;
 use App\Http\Resources\VideoResource;
 use Auth;
@@ -23,7 +24,7 @@ class VideoController extends Controller
     {
         $video = $query->paginate($request->pagesize, ['*'], 'page', $request->page);
         $list  = VideoResource::collection($video);
-        $total = count($list);
+        $total = VideoResource::collection($video)->total();
         foreach ($list as $k=>$v){
             $where = [
                 'user_id' => auth('api')->id(),
@@ -59,6 +60,23 @@ class VideoController extends Controller
             $video[$k]['is_collect'] = empty($count) ? false : true ;
 
         }
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'result' =>[
+                'list'  => $video,
+                'total' => $total,
+            ]
+
+            ,
+        ]);
+    }
+    public function rank(Request $request)
+    {
+        $video = Video::orderBy('collect_count','desc')->get();;
+
+        $total = count($video);
+
         return response()->json([
             'code' => 200,
             'message' => '查询成功',
@@ -129,20 +147,38 @@ class VideoController extends Controller
     //详情
     public function show($videoId, VideoQuery $query)
     {
-        $user_id = auth('api')->id();
-        $where = [
+//        $user_id = auth('api')->id();
+//        $where = [
+//            'video_id'  => $videoId,
+//            'user_id'   => $user_id??0,
+//            'type'      => 'view',
+//        ];
+//        Meta::create($where);
+
+        $userId = auth('api')->id();
+
+        $view_where = [
             'video_id'  => $videoId,
-            'user_id'   => $user_id??0,
-            'type'      => 'view',
+            'user_id'   => $userId??0,
         ];
-        Meta::create($where);
+        $count = View::where($view_where)->count();
+        if (empty($count))
+        {
+            View::create($view_where);
+        }
         $video = $query->findOrFail($videoId);
+        $res = new VideoResource($video);
+        $where = [
+            'user_id' => $userId??0,
+            'video_id'=>$videoId,
+        ];
+        $count = Meta::where($where)->count();
+        $res['is_collect'] = empty($count) ? false : true ;
+
         return response()->json([
             'code' => 200,
             'message' => '查询详情成功',
-            'result' =>
-                new VideoResource($video)
-            ,
+            'result' =>$res
         ]);
     }
 

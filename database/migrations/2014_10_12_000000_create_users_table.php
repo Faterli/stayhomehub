@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer('gender')->comment('性别');;
             $table->bigInteger('birthday')->comment('生日');;
             $table->rememberToken();
-            $table->integer('notification_count')->unsigned()->default(0)->comment('未读通知');;
+            $table->integer('notification_count')->unsigned()->default(0)->comment('未读通知');
             $table->timestamps();
         });
     }

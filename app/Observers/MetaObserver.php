@@ -9,7 +9,7 @@ class MetaObserver
         $meta->video->collect_count = $meta->video->metas->count();
         $meta->video->save();
 
-        //通知视频作者有新的点赞
+        //通知视频作者有新的收藏
         $meta->video->user->notify(new VideoReplied($meta));
     }
     public function deleted(Meta $meta)
@@ -17,7 +17,7 @@ class MetaObserver
         $meta->video->collect_count = $meta->video->metas->count();
         $meta->video->save();
 
-        // 通知视频作者有新的取消点赞
+        // 通知视频作者有新的取消收藏
         $meta->video->user->notify(new VideoReplied($meta));
     }
 }

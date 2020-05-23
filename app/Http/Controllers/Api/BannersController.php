@@ -15,8 +15,11 @@ class BannersController extends Controller
     public function index(Request $request,  BannerQuery $query)
     {
         $banner = $query->paginate();
-
-        return BannerResource::collection($banner);
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'result' =>BannerResource::collection($banner),
+        ]);
     }
     //新增
     public function store(BannerRequest $request)

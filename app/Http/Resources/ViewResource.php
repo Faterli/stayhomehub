@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class MetaResource extends JsonResource
+class ViewResource extends JsonResource
 {
 
     public function toArray($request)
