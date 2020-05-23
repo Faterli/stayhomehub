@@ -15,7 +15,7 @@ class CategoriesController extends Controller
                  'code' => 200,
                  'message' => '',
                  'result' => [
-                     CategoryResource::collection(Category::all())
+                     CategoryResource::collection(Category::where('parentId',0)->get())
                   ],
          ]);
     }

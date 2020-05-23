@@ -45,6 +45,33 @@ class VideoController extends Controller
         ]);
     }
 
+    public function selection()
+    {
+        $video = Video::orderBy('collect_count','desc')->limit(5)->get();;
+
+        $total = count($video);
+        foreach ($video as $k=>$v){
+            $where = [
+                'user_id' => auth('api')->id(),
+                'video_id'=>$v['id'],
+            ];
+            $count = Meta::where($where)->count();
+            $video[$k]['is_collect'] = empty($count) ? false : true ;
+
+        }
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'result' =>[
+                'list'  => $video,
+                'total' => $total,
+            ]
+
+            ,
+        ]);
+    }
+
+
     public function userIndex(Request $request, User $user, VideoQuery $query)
     {
         $video = $query->where('user_id', $user->id)->paginate();

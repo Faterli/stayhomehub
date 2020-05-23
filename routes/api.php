@@ -54,8 +54,8 @@ Route::prefix('v1')
                     ->name('verificationCodes.check');
             });
 
-        Route::middleware('throttle:' . config('api.rate_limits.access'))
-            ->group(function () {
+//        Route::middleware('throttle:' . config('api.rate_limits.access'))
+//            ->group(function () {
                 // 游客可以访问的接口
                 //轮播图 列表页，详情页
                 Route::resource('banner', 'BannersController')->only([
@@ -65,6 +65,10 @@ Route::prefix('v1')
                 Route::resource('video', 'VideoController')->only([
                     'index', 'show'
                 ]);
+
+                // 精选流
+                Route::get('video/list/selection', 'VideoController@selection')
+                ->name('video.selection');
                 // 某个用户的详情
                 Route::get('users/{user}', 'UsersController@show')
                     ->name('users.show');
@@ -130,5 +134,5 @@ Route::prefix('v1')
                 // 查看某个用户发布的视频
                 Route::get('users/{user}/video', 'VideoController@userIndex')
                     ->name('users.video.index');
-            });
+//            });
     });
