@@ -11,11 +11,12 @@ class MetaQuery extends QueryBuilder
     public function __construct()
     {
         parent::__construct(Meta::query());
+        $user_id = auth('api')->id();
 
         $this->allowedIncludes('user', 'category', 'video')
+            ->where('user_id',"=",  $user_id)
             ->allowedFilters([
                 'type','created_at',
-                AllowedFilter::exact('user_id'),
                 AllowedFilter::exact('video_id'),
             ]);
     }

@@ -15,7 +15,26 @@ class MetasController extends Controller
     {
         $meta = $query->paginate();
 
-        return MetaResource::collection($meta);
+        $collect = MetaResource::collection($meta);
+        $collect_v = [];
+        foreach ($collect as $v) {
+            if (!empty($v['video'])){
+                $collect_v[] = $v['video'];
+            }
+
+        }
+        $total = count($collect_v);
+
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'result' =>[
+                'list'  => $collect_v,
+                'total' => $total,
+            ]
+
+            ,
+        ]);
     }
     //点击操作
     public function store(MetaRequest $request)
@@ -27,15 +46,29 @@ class MetasController extends Controller
             'user_id'   => $userId,
         ];
 
-        $count = Meta::where($where)->count();
 
-        if (!empty($count)){
+        if (!empty($request->operate) && $request->operate == 2){
             $meta = Meta::where($where)->first();
-
+            if (empty($meta->id)){
+                return response()->json([
+                    'code' => 400,
+                    'message' => '你已经取消收藏了',
+                    'data' => [],
+                ])->setStatusCode(200);
+            }
             $down = Meta::find($meta->id);
             $down->delete();
 
-        }else{
+        }elseif($request->operate == 1){
+            $count = Meta::where($where)->count();
+
+            if ($count){
+                return response()->json([
+                    'code' => 400,
+                    'message' => '你已经收藏了',
+                    'data' => [],
+                ])->setStatusCode(200);
+            }
             $meta = Meta::create($where);
         }
         if ($meta){

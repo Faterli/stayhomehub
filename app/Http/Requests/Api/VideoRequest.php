@@ -20,7 +20,7 @@ class VideoRequest extends FormRequest
                     'cover'              => 'required|string',
                     'cover_s'            => 'required|string',
                     'video_duration'     => 'required|string',
-                    'shooting_time'               => 'required|string',
+                    'shooting_time'      => 'required|string',
                     'user_watch_jurisdiction' => 'required',
                     'transfer'           => 'required',
                 ];
