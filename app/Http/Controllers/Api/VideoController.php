@@ -45,6 +45,23 @@ class VideoController extends Controller
             ,
         ]);
     }
+    public function home(Request $request,  VideoQuery $query)
+    {
+        $userId = auth('api')->id();
+        $list  = VideoResource::collection($query->paginate($request->pagesize, ['*'], 'page', $request->page))->where('user_id','=',$userId);
+        $total = VideoResource::collection($query->paginate($request->pagesize, ['*'], 'page', $request->page))->where('user_id','=',$userId)->count();
+
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'result' =>[
+                'list'  => $list,
+                'total' => $total,
+            ]
+
+            ,
+        ]);
+    }
 
     public function selection()
     {

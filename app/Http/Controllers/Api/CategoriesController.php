@@ -11,6 +11,7 @@ class CategoriesController extends Controller
     public function index()
     {
         CategoryResource::wrap('data');
+
          return response()->json([
                  'code' => 200,
                  'message' => '',
@@ -31,5 +32,18 @@ class CategoriesController extends Controller
                  'message' => '',
                  'result' =>$_list,
          ]);
+    }
+    public function all(Request $request)
+    {
+
+        CategoryResource::wrap('data');
+
+        return response()->json([
+            'code' => 200,
+            'message' => '',
+            'result' => [
+                CategoryResource::collection(Category::all())
+            ],
+        ]);
     }
 }

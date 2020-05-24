@@ -32,6 +32,9 @@ Route::prefix('v1')
         // 二级分类列表
         Route::get('/column/list/{category_id}', 'CategoriesController@list')
             ->name('categories.list');
+        // 一级二级分类列表
+        Route::get('/column/list', 'CategoriesController@all')
+            ->name('categories.all');
 
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
             ->group(function () {
@@ -107,6 +110,10 @@ Route::prefix('v1')
                     Route::resource('video', 'VideoController')->only([
                          'store', 'update', 'destroy', 'show'
                     ]);
+
+                    // 当前登录用户video信息
+                    Route::get('/video/user/list', 'VideoController@home')
+                        ->name('video.show');
 
                     //足迹点赞收藏接口
                     Route::resource('meta', 'MetasController')->only([
