@@ -23,7 +23,11 @@ class NotificationsController extends Controller
             $notification_single['id'] = !empty($value['id']) ? $value['id'] : '';
             $notification_single['status'] = !empty($value['read_at']) ? 3 : 2;
             $notification_single['send_time'] = !empty($value['created_at']) ? date('Y-m-d H:i:s',strtotime($value['created_at'])) : '';
-            $notification_single['content'] = "用户".$value['data']['user_name']."收藏了您的作品【".$value['data']['video_title']."】";
+            if ($value['data']['type'] == 'collect'){
+                $notification_single['content'] = "用户".$value['data']['user_name']."收藏了您的作品【".$value['data']['video_title']."】";
+            }elseif($value['data']['type'] == 'cancel_collect'){
+                $notification_single['content'] = "用户".$value['data']['user_name']."取消收藏了您的作品【".$value['data']['video_title']."】";
+            }
             $notification_res[] = $notification_single;
         }
         return response()->json([

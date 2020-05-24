@@ -8,7 +8,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 class Video extends Model
 {
     protected $fillable = ['title', 'introduction','user_id', 'category_id', 'shooting_country', 'shooting_province', 'shooting_city', 'url',
-        'cover','cover_s','video_duration','shooting_time','user_watch_jurisdiction','transfer','collect_count'
+        'cover','cover_s','video_duration','shooting_time','user_watch_jurisdiction','transfer','collect_count','view_count'
     ];
     public function category()
     {
@@ -22,6 +22,10 @@ class Video extends Model
     public function metas()
     {
         return $this->hasMany(Meta::class);
+    }
+    public function view()
+    {
+        return $this->hasMany(View::class);
     }
 
     // 通过order进行话题排序

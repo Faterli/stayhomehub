@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Models\Meta;
-class VideoReplied extends Notification
+class VideoCanel extends Notification
 {
     use Queueable;
     public $meta;
@@ -32,6 +32,7 @@ class VideoReplied extends Notification
             'video_link' => $video->url,
             'video_id' => $video->id,
             'video_title' => $video->title,
+            'type' => 'cancel_collect',
         ];
 
     }

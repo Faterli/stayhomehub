@@ -2,6 +2,7 @@
 namespace App\Observers;
 use App\Models\Meta;
 use App\Notifications\VideoReplied;
+use App\Notifications\VideoCanel;
 class MetaObserver
 {
     public function created(Meta $meta)
@@ -18,6 +19,6 @@ class MetaObserver
         $meta->video->save();
 
         // 通知视频作者有新的取消收藏
-        $meta->video->user->notify(new VideoReplied($meta));
+        $meta->video->user->notify(new VideoCanel($meta));
     }
 }

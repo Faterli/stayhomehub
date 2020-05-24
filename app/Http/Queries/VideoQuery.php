@@ -77,6 +77,104 @@ class VideoQuery extends QueryBuilder
                     AllowedFilter::scope('withOrder'),
                 ]);
         }
+        if (isset($request->rank)){
+            $rank = $request->rank;
+            if ($rank == 'view'){
+                if (isset($request->time))
+                {
+                    $time = $request->time;
+                    if ($time == 'day'){
+                        $this->allowedIncludes('user', 'category')
+                            ->where('shooting_time', '>',date('Y-m-d 00:00:00',strtotime(now())))
+                            ->orderBy('view_count','desc')
+                            ->allowedFilters([
+                                'status',
+                            ]);
+                    }elseif ($time == 'week'){
+                        $this->allowedIncludes('user', 'category')
+                            ->where('shooting_time', '>',date('Y-m-d 00:00:00',strtotime('this week Monday',time())))
+                            ->orderBy('view_count','desc')
+                            ->allowedFilters([
+                                'status',
+                            ]);
+                    }elseif ($time == 'month'){
+                        $this->allowedIncludes('user', 'category')
+                            ->where('shooting_time', '>',date('Y-m-01 00:00:00',strtotime(now())))
+                            ->orderBy('view_count','desc')
+                            ->allowedFilters([
+                                'status',
+                            ]);
+                    }elseif ($time == 'year'){
+                        $this->allowedIncludes('user', 'category')
+                            ->where('shooting_time', '>',date('Y-01-01 00:00:00',strtotime(now())))
+                            ->orderBy('view_count','desc')
+                            ->allowedFilters([
+                                'status',
+                            ]);
+                    }elseif ($time == 'all'){
+                        $this->allowedIncludes('user', 'category')
+                            ->orderBy('view_count','desc')
+                            ->allowedFilters([
+                                'status',
+                            ]);
+                    }
+                }
+                $this->allowedIncludes('user', 'category')
+                     ->orderBy('view_count','desc')
+                     ->allowedFilters([
+                        'status',
+                    ]);
+            }elseif ($rank == 'collect'){
+                if (isset($request->time))
+                {
+                    $time = $request->time;
+                    if ($time == 'day'){
+                        $this->allowedIncludes('user', 'category')
+                            ->where('shooting_time', '>',date('Y-m-d 00:00:00',strtotime(now())))
+                            ->orderBy('collect_count','desc')
+                            ->allowedFilters([
+                                'status',
+                            ]);
+                    }elseif ($time == 'week'){
+                        $this->allowedIncludes('user', 'category')
+                            ->where('shooting_time', '>',date('Y-m-d 00:00:00',strtotime('this week Monday',time())))
+                            ->orderBy('collect_count','desc')
+                            ->allowedFilters([
+                                'status',
+                            ]);
+                    }elseif ($time == 'month'){
+                        $this->allowedIncludes('user', 'category')
+                            ->where('shooting_time', '>',date('Y-m-01 00:00:00',strtotime(now())))
+                            ->orderBy('collect_count','desc')
+                            ->allowedFilters([
+                                'status',
+                            ]);
+                    }elseif ($time == 'year'){
+                        $this->allowedIncludes('user', 'category')
+                            ->where('shooting_time', '>',date('Y-01-01 00:00:00',strtotime(now())))
+                            ->orderBy('collect_count','desc')
+                            ->allowedFilters([
+                                'status',
+                            ]);
+                    }elseif ($time == 'all'){
+                        $this->allowedIncludes('user', 'category')
+                            ->orderBy('collect_count','desc')
+                            ->allowedFilters([
+                                'status',
+                            ]);
+                    }
+                }
+                $this->allowedIncludes('user', 'category')
+                    ->orderBy('collect_count','desc')
+                    ->allowedFilters([
+                        'status',
+                    ]);
+            }
+
+
+        }
+
+
 
     }
 }

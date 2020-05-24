@@ -32,6 +32,7 @@ class VideoReplied extends Notification
             'video_link' => $video->url,
             'video_id' => $video->id,
             'video_title' => $video->title,
+            'type' => 'collect',
         ];
 
     }
