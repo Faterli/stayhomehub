@@ -15,6 +15,7 @@ use function GuzzleHttp\Promise\all;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
 use App\Http\Queries\VideoQuery;
+use App\Http\Queries\MyvideoQuery;
 
 
 class VideoController extends Controller
@@ -45,12 +46,15 @@ class VideoController extends Controller
             ,
         ]);
     }
-    public function home(Request $request,  VideoQuery $query)
+    public function home(Request $request,  MyvideoQuery $query)
     {
-        $userId = auth('api')->id();
-        $list  = VideoResource::collection($query->paginate($request->pagesize, ['*'], 'page', $request->page))->where('user_id','=',$userId);
-        $total = VideoResource::collection($query->paginate($request->pagesize, ['*'], 'page', $request->page))->where('user_id','=',$userId)->count();
+        //\DB::enableQueryLog();
 
+        $order = $request->time_mode;
+        $list  = VideoResource::collection($query->paginate($request->pagesize, ['*'], 'page', $request->page));
+        $total = VideoResource::collection($query->paginate($request->pagesize, ['*'], 'page', $request->page))->total();
+
+        //return response()->json(\DB::getQueryLog());die();
         return response()->json([
             'code' => 200,
             'message' => '查询成功',

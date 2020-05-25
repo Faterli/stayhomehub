@@ -49,7 +49,6 @@ class VideoQuery extends QueryBuilder
                     ->where('shooting_time',"<",  $end)
                     ->allowedFilters([
                         'title','status',
-                        AllowedFilter::scope('withOrder'),
                     ]);
             }else{
 
@@ -64,7 +63,6 @@ class VideoQuery extends QueryBuilder
                     ->where('shooting_time',"<",  $end)
                     ->allowedFilters([
                         'title','status',
-                        AllowedFilter::scope('withOrder'),
                     ]);
             }
 
@@ -74,7 +72,7 @@ class VideoQuery extends QueryBuilder
                 ->where('shooting_time',"<",  $end)
                 ->allowedFilters([
                     'title','status',
-                    AllowedFilter::scope('withOrder'),
+                    AllowedFilter::exact('category_id'),
                 ]);
         }
         if (isset($request->rank)){
