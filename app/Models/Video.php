@@ -36,4 +36,20 @@ class Video extends Model
             ->where($this->getRouteKeyName(), $value)
             ->first();
     }
+    public function scopeBeginTime(QueryBuilder $query, $date)
+    {
+        return $query->where('shooting_time', '>=', $date);
+    }
+    public function scopeEndTime(QueryBuilder $query, $date)
+    {
+        return $query->where('shooting_time', '<=', $date);
+    }
+    public function scopeBeginLength(QueryBuilder $query, $date)
+    {
+        return $query->where('video_duration', '>=', $date);
+    }
+    public function scopeEndLength(QueryBuilder $query, $date)
+    {
+        return $query->where('video_duration', '<=', $date);
+    }
 }

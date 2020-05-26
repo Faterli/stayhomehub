@@ -140,6 +140,16 @@ Route::prefix('v1')
                     Route::resource('banner', 'BannersController')->only([
                         'store', 'update', 'destroy',
                     ]);
+                    //后台视频列表（搜索功能）
+                    Route::get('admin/video/list',  'VideoController@search')
+                        ->name('video.search');
+                    //后台视频详情
+                    Route::get('video/details/{id}',  'VideoController@details')
+                        ->name('video.details');
+                    //后台更新视频信息
+                    Route::patch('video/update/{id}',  'VideoController@edit')
+                        ->name('video.edit');
+
 
 
                 });
@@ -147,8 +157,5 @@ Route::prefix('v1')
                 Route::get('users/{user}/video', 'VideoController@userIndex')
                     ->name('users.video.index');
 
-                //上传、修改、删除视频CURD
-                Route::get('admin/video/list',  'VideoController@search')
-                    ->name('video.search');
             });
     });

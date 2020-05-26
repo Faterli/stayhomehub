@@ -16,6 +16,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
 use App\Http\Queries\VideoQuery;
 use App\Http\Queries\MyvideoQuery;
+use App\Http\Queries\AdminvideoQuery;
 
 
 class VideoController extends Controller
@@ -203,7 +204,9 @@ class VideoController extends Controller
             'result' =>$res
         ]);
     }
-    public function search(Request $request,  VideoQuery $query)
+
+    #后台视频接口(搜索)
+    public function search(Request $request,  AdminvideoQuery $query)
     {
         $video = $query->paginate($request->pagesize, ['*'], 'page', $request->page);
         $list  = VideoResource::collection($video);
@@ -217,6 +220,36 @@ class VideoController extends Controller
                 'total' => $total,
             ]
 
+            ,
+        ]);
+    }
+    //后台获取详情
+    public function details(Request $request)
+    {
+        $res = Video::firstWhere('id',$request->id);
+        if(!empty($res['category_id']))
+        {
+            $res['column_id'] = $res['category_id'];
+            $column_name = Category::where(['id'=>$res['category_id']])->get('name')->first();
+
+            $res['column_name'] = $column_name['name']??'';
+
+        }
+        return response()->json([
+            'code' => 200,
+            'message' => '查询详情成功',
+            'result' =>$res
+        ]);
+    }
+
+    //后台更新视频信息
+    public function edit(Request $request)
+    {
+        Video::where('id',$request->id)->update($request->all());
+        return response()->json([
+            'code' => 200,
+            'message' => '修改成功',
+            'result' =>Video::firstWhere('id',$request->id)
             ,
         ]);
     }
