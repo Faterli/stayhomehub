@@ -12,7 +12,7 @@ class CreateBannersTable extends Migration
         Schema::create('banners', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('video_id')->index();
-            $table->string('pic');
+            $table->string('cover');
             $table->string('status');
             $table->timestamps();
         });

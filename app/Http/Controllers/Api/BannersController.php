@@ -7,7 +7,6 @@ use App\Http\Queries\BannerQuery;
 use App\Http\Requests\Api\BannerRequest;
 use App\Http\Resources\BannerResource;
 use App\Models\Banner;
-use App\Models\Image;
 use Illuminate\Http\Request;
 
 class BannersController extends Controller
@@ -15,47 +14,43 @@ class BannersController extends Controller
     public function index(Request $request,  BannerQuery $query)
     {
         $banner = $query->paginate();
+        $list = BannerResource::collection($banner);
+
+        foreach ($list as $k=>$v){
+            $list[$k]['title'] = $v['video']['title']??'';
+        }
         return response()->json([
             'code' => 200,
             'message' => '查询成功',
-            'result' =>BannerResource::collection($banner),
+            'result' =>$list,
         ]);
     }
     //新增
     public function store(BannerRequest $request)
     {
-        $image = Image::find($request->pic);
 
         $banner = Banner::create([
             'video_id' => $request->video_id,
-            'pic' => $image->path,
+            'cover' => $request->cover,
             'status' => $request->status,
         ]);
         return response()->json([
             'code' => 200,
             'message' => '添加成功',
-            'result' => [
-                new BannerResource($banner)
-            ],
+            'result' => new BannerResource($banner)
         ]);
     }
     //修改
     public function update(BannerRequest $request, Banner $banner)
     {
-        $attributes = $request->only(['video_id', 'status']);
-        if($request->pic){
-            $image = Image::find($request->pic);
-            $attributes['avatar'] = $image->path;
-        }
-
+        $attributes = $request->only(['video_id', 'status', 'cover']);
 
         $banner->update($attributes);
         return response()->json([
             'code' => 200,
             'message' => '修改成功',
-            'result' => [
-                new BannerResource($banner)
-            ],
+            'result' => new BannerResource($banner)
+
         ]);
     }
     //删除

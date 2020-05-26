@@ -146,5 +146,9 @@ Route::prefix('v1')
                 // 查看某个用户发布的视频
                 Route::get('users/{user}/video', 'VideoController@userIndex')
                     ->name('users.video.index');
+
+                //上传、修改、删除视频CURD
+                Route::get('admin/video/list',  'VideoController@search')
+                    ->name('video.search');
             });
     });

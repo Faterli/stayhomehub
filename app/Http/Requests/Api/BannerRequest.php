@@ -14,7 +14,7 @@ class BannerRequest extends FormRequest
 
                 return [
                     'video_id'  => 'exists:videos,id',
-                    'pic'       => 'exists:images,id,type,banner',
+                    'cover'     => 'string',
                     'status'    => 'required|string',
                 ];
                 break;
@@ -22,7 +22,7 @@ class BannerRequest extends FormRequest
 
                 return [
                     'video_id'  => 'exists:videos,id',
-                    'pic'       => 'exists:images,id,type,banner',
+                    'cover'     => 'string',
                     'status'    => 'string',
                 ];
                 break;

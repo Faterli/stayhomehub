@@ -203,5 +203,21 @@ class VideoController extends Controller
             'result' =>$res
         ]);
     }
+    public function search(Request $request,  VideoQuery $query)
+    {
+        $video = $query->paginate($request->pagesize, ['*'], 'page', $request->page);
+        $list  = VideoResource::collection($video);
+        $total = VideoResource::collection($video)->total();
 
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'result' =>[
+                'list'  => $list,
+                'total' => $total,
+            ]
+
+            ,
+        ]);
+    }
 }
