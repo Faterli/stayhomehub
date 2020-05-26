@@ -13,10 +13,7 @@ Route::prefix('v1')
         // 登出
         Route::delete('admin/logout', 'AdminsController@logout')
             ->name('api.admins.logout');
-        // CURD
-        Route::resource('admin', 'AdminsController')->only([
-            'index','store', 'update', 'destroy', 'show'
-        ]);
+
         //腾讯云api签名生成
         Route::post('signature', 'AuthorizationsController@signature')
             ->name('authorizations.signature');
@@ -61,8 +58,8 @@ Route::prefix('v1')
                     ->name('verificationCodes.check');
             });
 
-//        Route::middleware('throttle:' . config('api.rate_limits.access'))
-//            ->group(function () {
+        Route::middleware('throttle:' . config('api.rate_limits.access'))
+            ->group(function () {
                 // 游客可以访问的接口
                 //轮播图 列表页，详情页
                 Route::resource('banner', 'BannersController')->only([
@@ -135,6 +132,10 @@ Route::prefix('v1')
 
                 // 后台登录后可以访问的接口
                 Route::middleware('auth:adminapi')->group(function() {
+                    // 管理员CURD
+                    Route::resource('admin', 'AdminsController')->only([
+                        'index','store', 'update', 'destroy', 'show'
+                    ]);
                     //轮播图 CURD
                     Route::resource('banner', 'BannersController')->only([
                         'store', 'update', 'destroy',
@@ -145,5 +146,5 @@ Route::prefix('v1')
                 // 查看某个用户发布的视频
                 Route::get('users/{user}/video', 'VideoController@userIndex')
                     ->name('users.video.index');
-//            });
+            });
     });

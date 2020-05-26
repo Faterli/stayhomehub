@@ -124,6 +124,7 @@ class VideoController extends Controller
     {
         $video->fill($request->all());
         $video->user_id = $request->user()->id;
+        $video->status = 1;
         $video->save();
 
          return response()->json([

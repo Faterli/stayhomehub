@@ -53,13 +53,13 @@ class ViewController extends Controller
                 'total'=> $total_today,
                 'list' => $collect_v_today,
             ],
-            'within_a_week' => [
-                'total'=> $total,
-                'list' => $collect_v,
-            ],
             'yesterday' => [
                 'total'=> $total_month,
                 'list' => $collect_v_month,
+            ],
+            'within_a_week' => [
+                'total'=> $total,
+                'list' => $collect_v,
             ],
         ];
         return response()->json([

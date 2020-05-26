@@ -12,7 +12,7 @@ class AdminRequest extends FormRequest
         switch ($this->method()) {
             case 'POST':
                 return [
-                    'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:admins,name',
+                    'admin_name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:admins,admin_name',
                     'email' => 'required||unique:admins,email',
                     'phone' => [
                         'required',
@@ -26,7 +26,7 @@ class AdminRequest extends FormRequest
                 break;
             case 'PATCH':
                 return [
-                    'name' => 'string|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:admins,name',
+                    'admin_name' => 'string|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:admins,admin_name',
                     'email' => 'string||unique:admins,email',
                     'phone' => [
                         'regex:/^((13[0-9])|(14[5,7])|(15[0-3,5-9])|(17[0,3,5-8])|(18[0-9])|166|198|199)\d{8}$/',

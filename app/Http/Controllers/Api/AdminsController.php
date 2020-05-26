@@ -46,21 +46,25 @@ class AdminsController extends Controller
     }
     public function index(Request $request,  AdminQuery $query)
     {
-        $admin = $query->paginate();
+        $admin = $query->paginate($request->pagesize, ['*'], 'page', $request->page);
+        $list  = AdminResource::collection($admin);
+        $total = AdminResource::collection($admin)->total();
 
         return response()->json([
             'code' => 200,
             'message' => '查询成功',
             'result' => [
-                AdminResource::collection($admin)
-            ],
+                'list' => $list,
+                'total'=> $total,
+            ]
+
         ]);
     }
 
     public function store(AdminRequest $request)
     {
         $admin = Admin::create([
-            'name' => $request->name,
+            'admin_name' => $request->admin_name,
             'email' => $request->email,
             'phone' => $request->phone,
             'status' => $request->status,
@@ -70,9 +74,9 @@ class AdminsController extends Controller
         return response()->json([
             'code' => 200,
             'message' => '添加成功',
-            'result' => [
+            'result' =>
                 new AdminResource($admin)
-            ],
+            ,
         ]);
     }
     public function logout()
@@ -118,6 +122,10 @@ class AdminsController extends Controller
     public function show($adminId, AdminQuery $query)
     {
         $admin = $query->findOrFail($adminId);
-        return new AdminResource($admin);
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'result' => new AdminResource($admin)
+        ]);
     }
 }

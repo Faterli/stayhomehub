@@ -10,7 +10,7 @@ class SeedAdminsData extends Migration
     {
         $admins = [
             [
-                'name'       => '站长',
+                'admin_name' => '站长',
                 'phone'      => '18000000000',
                 'email'      => '123@123.com',
                 'password'   => '$2y$10$JlDd.M5UHM9uSgp905yxXuOwuAGtLqumxItzlFzgiXC8M4cQ7N39a',
@@ -18,8 +18,10 @@ class SeedAdminsData extends Migration
                 'admin_type' => '1',
             ],
         ];
-        DB::table('admins')->insert($admins); }
+        DB::table('admins')->insert($admins);
+    }
     public function down()
     {
-        DB::table('admins')->truncate(); }
+        DB::table('admins')->truncate();
+    }
 }
