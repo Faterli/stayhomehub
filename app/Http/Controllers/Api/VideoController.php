@@ -25,7 +25,7 @@ class VideoController extends Controller
 
     public function index(Request $request,  VideoQuery $query)
     {
-        $video = $query->paginate($request->pagesize, ['*'], 'page', $request->page);
+        $video = $query->where('user_watch_jurisdiction',1)->paginate($request->pagesize, ['*'], 'page', $request->page);
         $list  = VideoResource::collection($video);
         $total = VideoResource::collection($video)->total();
         foreach ($list as $k=>$v){
@@ -71,7 +71,7 @@ class VideoController extends Controller
 
     public function selection()
     {
-        $video = Video::orderBy('first_page','asc')->where('first_page','!=',0)->limit(5)->get();;
+        $video = Video::orderBy('first_page','asc')->where('first_page','!=',0)->where('user_watch_jurisdiction','=',1)->limit(5)->get();;
 
         $total = count($video);
         foreach ($video as $k=>$v){
