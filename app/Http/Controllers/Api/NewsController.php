@@ -14,28 +14,40 @@ class NewsController extends Controller
     public function index(Request $request,  NewsQuery $query)
     {
         $news = $query->paginate();
-
-        return MetaResource::collection($news);
-    }
-
-    //修改
-    public function update(NewsRequest $request, News $news)
-    {
-        $userId = auth('api')->id();
-
-        if (auth('api')->id())
+        $notification = NewsResource::collection($news);
+        $total        = NewsResource::collection($news)->total();
+        $notification_res = [];
+        foreach ($notification as $value)
         {
-            $userId = auth('api')->id();
-        }else{
-            $userId = '0000';
+            $notification_single = [];
+            $notification_single['id'] = !empty($value['id']) ? $value['id'] : '';
+            $notification_single['status'] = !empty($value['admin_id']) ? 3 : 2;
+            $notification_single['send_time'] = !empty($value['created_at']) ? date('Y-m-d H:i:s',strtotime($value['created_at'])) : '';
+            $notification_single['content'] = "用户".$value['user']['name']."上传了新的作品【".$value['video']['title']."】，请尽快审核";
 
+            $notification_res[] = $notification_single;
         }
-
-        $news = News::create([
-            'video_id' => $request->name,
-            'user_id' => $request->email,
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'result' =>[
+                'list'  => $notification_res,
+                'total' => $total,
+            ]
         ]);
-
-        return new UserResource($news);
     }
+
+    // 获取所有未读通知总数
+    public function stats(Request $request)
+    {
+        $num = News::where('admin_id','=','')->count();
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'result' => [
+                'unread_count' => $num,
+            ],
+        ]);
+    }
+
 }

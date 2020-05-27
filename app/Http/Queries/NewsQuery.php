@@ -12,7 +12,7 @@ class NewsQuery extends QueryBuilder
     {
         parent::__construct(News::query());
 
-        $this->allowedIncludes('video')
+        $this->allowedIncludes('user','video')
             ->allowedFilters([
                 'type',
                 AllowedFilter::exact('user_id'),

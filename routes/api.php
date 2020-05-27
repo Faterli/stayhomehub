@@ -122,7 +122,7 @@ Route::prefix('v1')
                         ->name('notifications.index');
                     // 一键已读通知
                     Route::put('/message/check/all', 'NotificationsController@read')
-                        ->name('notifications.index');
+                        ->name('notifications.read');
                     // 通知统计
                     Route::get('/message/unread', 'NotificationsController@stats')
                         ->name('notifications.stats');
@@ -153,6 +153,12 @@ Route::prefix('v1')
                     Route::patch('/video/audit/{id}',  'VideoController@audit')
                         ->name('video.audit');
 
+                    // 后台通知列表
+                    Route::get('admin/message/list', 'NewsController@index')
+                        ->name('news.index');
+                    // 后台通知统计
+                    Route::get('admin/message/unread', 'NewsController@stats')
+                        ->name('news.stats');
 
 
                 });
