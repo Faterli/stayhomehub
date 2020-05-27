@@ -8,6 +8,7 @@ use App\Models\Video;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\View;
+use App\Models\News;
 use Illuminate\Http\Request;
 use App\Http\Resources\VideoResource;
 use Auth;
@@ -70,7 +71,7 @@ class VideoController extends Controller
 
     public function selection()
     {
-        $video = Video::orderBy('collect_count','desc')->limit(5)->get();;
+        $video = Video::orderBy('first_page','asc')->where('first_page','!=',0)->limit(5)->get();;
 
         $total = count($video);
         foreach ($video as $k=>$v){
@@ -246,6 +247,29 @@ class VideoController extends Controller
     public function edit(Request $request)
     {
         Video::where('id',$request->id)->update($request->all());
+        return response()->json([
+            'code' => 200,
+            'message' => '修改成功',
+            'result' =>Video::firstWhere('id',$request->id)
+            ,
+        ]);
+    }
+    //后台审核视频信息
+    public function audit(Request $request)
+    {
+        $status         = $request->status;
+        $first_page     = $request->first_page??0;
+        $audit_feedback = $request->audit_feedback??'';
+        Video::where('id',$request->id)->update([
+            'status'    =>$status,
+            'first_page'=>$first_page,
+            ]);
+        $audit = News::firstwhere('video_id',$request->id);
+
+        $audit->status = $status;
+        $audit->reason = $audit_feedback;
+        $audit->admin_id = auth('adminapi')->id();
+        $audit->update();
         return response()->json([
             'code' => 200,
             'message' => '修改成功',

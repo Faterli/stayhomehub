@@ -23,10 +23,15 @@ class NotificationsController extends Controller
             $notification_single['id'] = !empty($value['id']) ? $value['id'] : '';
             $notification_single['status'] = !empty($value['read_at']) ? 3 : 2;
             $notification_single['send_time'] = !empty($value['created_at']) ? date('Y-m-d H:i:s',strtotime($value['created_at'])) : '';
-            if ($value['data']['type'] == 'collect'){
+            if (!empty($value['data']['type']) && $value['data']['type'] == 'collect'){
                 $notification_single['content'] = "用户".$value['data']['user_name']."收藏了您的作品【".$value['data']['video_title']."】";
-            }elseif($value['data']['type'] == 'cancel_collect'){
+            }elseif(!empty($value['data']['type']) && $value['data']['type'] == 'cancel_collect'){
                 $notification_single['content'] = "用户".$value['data']['user_name']."取消收藏了您的作品【".$value['data']['video_title']."】";
+            }
+            if(!empty($value['data']['status']) && $value['data']['status'] == 2){
+                $notification_single['content'] = "恭喜您，您的作品【".$value['data']['video_title']."】审核通过，感谢您的分享~";
+            }elseif(!empty($value['data']['status']) && $value['data']['status'] == 3){
+                $notification_single['content'] = "抱歉通知您，您上传的视频【".$value['data']['video_title']."】审核不通过，原因是'".$value['data']['reason']."'，如有疑问，请联系管理员 ".$value['data']['admin_name']."（".$value['data']['admin_email']."）";
             }
             $notification_res[] = $notification_single;
         }

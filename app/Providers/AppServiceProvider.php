@@ -28,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
         \App\Models\Meta::observe(\App\Observers\MetaObserver::class);
         \App\Models\View::observe(\App\Observers\ViewObserver::class);
         \App\Models\Video::observe(\App\Observers\VideoObserver::class);
+        \App\Models\News::observe(\App\Observers\NewsObserver::class);
     }
 }

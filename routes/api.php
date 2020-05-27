@@ -149,6 +149,9 @@ Route::prefix('v1')
                     //后台更新视频信息
                     Route::patch('video/update/{id}',  'VideoController@edit')
                         ->name('video.edit');
+                    //后台审核视频信息
+                    Route::patch('/video/audit/{id}',  'VideoController@audit')
+                        ->name('video.audit');
 
 
 
