@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Models\News;
-class VideoAdmin extends Notification
+class VideoAdmin extends Notification implements ShouldQueue
 {
     use Queueable;
     public $news;
@@ -18,7 +18,7 @@ class VideoAdmin extends Notification
     public function via($notifiable)
     {
         // 开启通知的频道
-        return ['database'];
+        return ['database', 'mail'];
     }
     public function toDatabase($notifiable)
     {
@@ -51,5 +51,11 @@ class VideoAdmin extends Notification
         }
 
 
+    }
+    public function toMail($notifiable)
+    {
+        $url = 'http://39.106.98.246:81/#/newsMid';
+        return (new MailMessage) ->line('您的视频审核完成，请到我消息中心查看结果!')
+            ->action('消息中心', $url);
     }
 }
