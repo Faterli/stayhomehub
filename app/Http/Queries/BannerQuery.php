@@ -14,8 +14,8 @@ class BannerQuery extends QueryBuilder
 
         $this->allowedIncludes('video')
             ->allowedFilters([
-                'status',
                 AllowedFilter::exact('video_id'),
+                AllowedFilter::exact('status'),
             ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Queries\UserQuery;
 use App\Models\User;
 use App\Models\Image;
 use Illuminate\Http\Request;
@@ -188,6 +189,42 @@ class UsersController extends Controller
                      new UserResource($user),
                   ],
          ]);
+    }
+
+    #后台用户接口
+    public function list(Request $request,  UserQuery $query)
+    {
+        $user = $query->paginate($request->pagesize, ['*'], 'page', $request->page);
+        $list  = UserResource::collection($user);
+        foreach ($list as $k => $v){
+            $list[$k]['birthday'] = date('Y-m-d',$v['birthday']);
+
+        }
+        $total = UserResource::collection($user)->total();
+
+        return response()->json([
+            'code' => 200,
+            'message' => '查询成功',
+            'result' =>[
+                'list'  => $list,
+                'total' => $total,
+            ]
+
+            ,
+        ]);
+    }
+    #后台删除用户接口
+    public function delete(Request $request)
+    {
+        $video = User::firstwhere('id',$request->id);
+        $video->delete();
+
+        return response()->json([
+            'code' => 200,
+            'message' => '删除成功',
+            'result' => [
+            ],
+        ]);
     }
 
 }

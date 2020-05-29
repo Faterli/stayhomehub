@@ -71,7 +71,7 @@ class VideoController extends Controller
 
     public function selection()
     {
-        $video = Video::orderBy('first_page','asc')->where('first_page','!=',0)->where('user_watch_jurisdiction','=',1)->limit(5)->get();;
+        $video = Video::orderBy('weight','asc')->where('weight','!=',0)->where('user_watch_jurisdiction','=',1)->limit(5)->get();;
 
         $total = count($video);
         foreach ($video as $k=>$v){
@@ -209,7 +209,7 @@ class VideoController extends Controller
     #后台视频接口(搜索)
     public function search(Request $request,  AdminvideoQuery $query)
     {
-        $video = $query->paginate($request->pagesize, ['*'], 'page', $request->page);
+        $video = $query->orderBy('id','desc')->paginate($request->pagesize, ['*'], 'page', $request->page);
         $list  = VideoResource::collection($video);
         $total = VideoResource::collection($video)->total();
 
@@ -254,15 +254,28 @@ class VideoController extends Controller
             ,
         ]);
     }
+    //后台删除
+    public function delete(Request $request)
+    {
+        $video = Video::firstwhere('id',$request->id);
+        $video->delete();
+
+        return response()->json([
+            'code' => 200,
+            'message' => '删除成功',
+            'result' => [
+            ],
+        ]);
+    }
     //后台审核视频信息
     public function audit(Request $request)
     {
         $status         = $request->status;
-        $first_page     = $request->first_page??0;
+        $first_page     = $request->weight??0;
         $audit_feedback = $request->audit_feedback??'';
         Video::where('id',$request->id)->update([
             'status'    =>$status,
-            'first_page'=>$first_page,
+            'weight'=>$first_page,
             ]);
         $audit = News::firstwhere('video_id',$request->id);
 

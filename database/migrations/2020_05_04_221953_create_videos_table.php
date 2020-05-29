@@ -28,7 +28,7 @@ class CreateVideosTable extends Migration
             $table->integer('collect_count')->unsigned()->default(0)->comment('收藏数');;
             $table->integer('view_count')->unsigned()->default(0)->comment('浏览数');;
             $table->integer('status')->unsigned()->default(0)->comment('审核状态');;
-            $table->integer('first_page')->unsigned()->default(0)->comment('权重');;
+            $table->integer('weight')->unsigned()->default(0)->comment('权重');;
             $table->timestamps();
         });
     }

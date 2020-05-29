@@ -12,7 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Admin extends Authenticatable implements MustVerifyEmailContract, JWTSubject
 {
     protected $fillable = [
-        'id','admin_name', 'email', 'phone','status','admin_type'
+        'id','admin_name', 'email', 'phone','status','admin_type','password'
     ];
 
     public function getJWTIdentifier()
