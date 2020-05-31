@@ -13,7 +13,7 @@ class NewsController extends Controller
 {
     public function index(Request $request,  NewsQuery $query)
     {
-        $news = $query->paginate();
+        $news = $query->orderBy('id','desc')->paginate();
         $notification = NewsResource::collection($news);
         $total        = NewsResource::collection($news)->total();
         $notification_res = [];

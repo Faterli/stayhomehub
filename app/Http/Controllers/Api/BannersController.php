@@ -43,9 +43,8 @@ class BannersController extends Controller
     //修改
     public function update(BannerRequest $request, Banner $banner)
     {
-        $attributes = $request->only(['video_id', 'status', 'cover']);
 
-        $banner->update($attributes);
+        $banner->update($request->all());
         return response()->json([
             'code' => 200,
             'message' => '修改成功',

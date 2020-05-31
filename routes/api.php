@@ -132,6 +132,12 @@ Route::prefix('v1')
 
                 // 后台登录后可以访问的接口
                 Route::middleware('auth:adminapi')->group(function() {
+                    //用户列表
+                    Route::get('user/list',  'UsersController@list')
+                        ->name('users.list');
+                    //删除用户
+                    Route::delete('user/delete/{id}',  'UsersController@delete')
+                        ->name('users.delete');
                     // 管理员CURD
                     Route::resource('admin', 'AdminsController')->only([
                         'index','store', 'update', 'destroy', 'show'
@@ -149,6 +155,9 @@ Route::prefix('v1')
                     //后台更新视频信息
                     Route::patch('video/update/{id}',  'VideoController@edit')
                         ->name('video.edit');
+                    //后台更新视频信息
+                    Route::delete('video/delete/{id}',  'VideoController@delete')
+                        ->name('video.delete');
                     //后台审核视频信息
                     Route::patch('/video/audit/{id}',  'VideoController@audit')
                         ->name('video.audit');
