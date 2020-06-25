@@ -71,7 +71,7 @@ class MetasController extends Controller
             }
             $meta = Meta::create($where);
         }
-        if ($meta){
+        if ($meta || $down){
             $count = Meta::where('video_id','=',$request->video_id)->count();
 
             return response()->json([

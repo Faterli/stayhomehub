@@ -7,15 +7,12 @@ use Auth;
 use App\Http\Resources\NotificationResource;
 
 class NotificationsController extends Controller
-{
-    // 获取所有通知
+{// 获取所有通知
     public function index(Request $request)
     {
         $notifications = $request->user()->notifications()->paginate();
-
         $notification = NotificationResource::collection($notifications);
         $total        = NotificationResource::collection($notifications)->total();
-
         $notification_res = [];
         foreach ($notification as $value)
         {
@@ -44,7 +41,6 @@ class NotificationsController extends Controller
             ]
         ]);
     }
-
     // 一键已读所有通知
     public function read(Request $request)
     {
@@ -52,9 +48,7 @@ class NotificationsController extends Controller
         return response()->json([
             'code' => 200,
             'message' => '操作成功',
-            'result' => [
-
-            ],
+            'result' => [],
         ]);
     }
     // 获取所有未读通知总数

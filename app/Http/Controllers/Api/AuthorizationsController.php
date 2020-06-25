@@ -32,7 +32,7 @@ class AuthorizationsController extends Controller
 
          return response()->json([
                  'code' => 200,
-                 'message' => '',
+                 'message' => '登陆成功',
                  'result' => [
                      'user_info' => auth('api')->user(),
                      'access_token' => $token,
